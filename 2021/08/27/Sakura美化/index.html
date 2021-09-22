@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">2021MISC实验报告 | Sueyoki</title>
+  <title itemprop="name">Sakura主题美化 | Sueyoki</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -353,11 +353,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/Sueyoki/picture/raw/master/pic/img2.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img2.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/Sueyoki/picture/raw/master/pic/img10.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img10.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      2021MISC实验报告</h1>
+      Sakura主题美化</h1>
       <p class="entry-census">
         <span>
           <a href="hojun.cn">
@@ -369,7 +369,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-8-25<span class="bull">
+        2021-8-27<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -383,299 +383,123 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="MISC实验报告"><a href="#MISC实验报告" class="headerlink" title="MISC实验报告"></a>MISC实验报告</h1><h2 id="实验一-LSB隐写的实现"><a href="#实验一-LSB隐写的实现" class="headerlink" title="实验一 LSB隐写的实现"></a>实验一 LSB隐写的实现</h2><p>  首先第一步，打开vaala的QQ，把vaala头像爬下来</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109151452758.png" alt="58"></p>
-<p>爬下来是jpg，找个在线网站转成png</p>
-<p><a target="_blank" rel="noopener" href="https://www.aconvert.com/cn/image/jpg-to-png/">https://www.aconvert.com/cn/image/jpg-to-png/</a></p>
-<p>这个就不错~</p>
-<p>贴代码：</p>
-<pre><code>from PIL import Image as im
-import re
+          <h1 id="Sakura主题美化"><a href="#Sakura主题美化" class="headerlink" title="Sakura主题美化"></a>Sakura主题美化</h1><p>参考博客：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011759205/article/details/104839472">https://blog.csdn.net/u011759205/article/details/104839472</a></p>
+<p><a target="_blank" rel="noopener" href="https://yremp.live/hexo-sakura/">https://yremp.live/hexo-sakura/</a></p>
+<h3 id="关于-cur的光标不显示（第一次打开方式错了要重置-з」∠"><a href="#关于-cur的光标不显示（第一次打开方式错了要重置-з」∠" class="headerlink" title="关于.cur的光标不显示（第一次打开方式错了要重置_(:з」∠)_"></a>关于.cur的光标不显示（第一次打开方式错了要重置_(:з」∠)_</h3><p>在cmd下输入</p>
+<p>assoc.ani=anyfile</p>
+<p>assoc.cur=anyfile</p>
+<p>就解决了</p>
+<h3 id="关于网易云歌曲外链"><a href="#关于网易云歌曲外链" class="headerlink" title="关于网易云歌曲外链"></a>关于网易云歌曲外链</h3><p>整个页面配置在 /source/music/index.md中：<br>其代码如下：</p>
+<pre><code>
+---
 
-replace_reg = re.compile(r&#39;[1|0]$&#39;)
+title: music
 
+date: 2018-12-20 23:14:28
 
-# 替换最后一位的数据，source是被替换数据，target是目标数据，就是batarget放到source最后一位
-def repLstBit(source, target):
-    return replace_reg.sub(target, source)
+keywords: 喜欢的音乐
 
+description: 
 
-# 运行结果：&#39;123X&#39;
-print(repLstBit(&quot;111110&quot;, &quot;1&quot;))
+comments: false
 
+photos: http://pic.netbian.com/uploads/allimg/170911/233802-15051442827782.jpg
 
-# 字符串转换二进制，不够八位的话补齐8位
-def encode(s):
-    return &#39;&#39;.join(bin(ord(c)).replace(&#39;0b&#39;, &#39;&#39;).rjust(8, &#39;0&#39;) for c in s)
+---
 
-
-# 切割从图像中收集到的数据，就是把载密图像的对应最后一位提取出来之后需要进行切割
-def cut_text(text, lenth):
-    textArr = re.findall(&#39;.&#123;&#39; + str(lenth) + &#39;&#125;&#39;, text)
-    tempStr = text[(len(textArr) * lenth):]
-    if len(tempStr) != 0:
-        textArr.append(text[(len(textArr) * lenth):])
-    return textArr
-
-
-# 二进制转换成字符串，看上面切割方法的注释即可理解该方法存在的意义
-def decode(s):
-    bitArr = cut_text(s, 8)
-    return &quot;&quot;.join(chr(int(i, 2)) for i in bitArr)
-
-
-# 读取宿主图像和要写入的信息生成载密图像。
-if __name__ == &#39;__main__&#39;:
-    img = im.open(&quot;D:\\f盘\\python\\pycharm\\222\\1.png&quot;)
-    width = img.size[0]
-    height = img.size[1]
-    hideInfo = &quot;vaalacat yyds&quot;
-    hideBitArr = encode(hideInfo)
-    count = 0
-    bitInfoLen = len(hideBitArr)
-
-    print(hideBitArr)
-    for i in range(width):
-        for j in range(height):
-            if count == bitInfoLen:
-                break;
-            pixel = img.getpixel((i, j));
-            print(pixel[0])
-            sourceBit = bin(pixel[0])[2:]
-            print(sourceBit)
-            rspBit = int(repLstBit(sourceBit, hideBitArr[count]), 2)
-            count += 1
-            img.putpixel((i, j), (rspBit, rspBit, rspBit))
-    img.save(&quot;D:\\f盘\\python\\pycharm\\222\\2.png&quot;)
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=100% height=450 src=&quot;//music.163.com/outchain/player?type=0&amp;id=762797776&amp;auto=1&amp;height=430&quot;&gt;&lt;/iframe&gt;
 </code></pre>
-<p>1.png是原图，2.png是生成的加密图片~</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130848613.png" alt="3"></p>
-<p>使用Stegsolve处理图片</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130843447.png" alt="image-20210805160248277"></p>
-<p>打开vaalacat</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844830.png" alt="img"></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844398.png" alt="image-20210805160336092"></p>
-<p>vaalacat yyds</p>
-<h2 id="实验二-压缩包分析"><a href="#实验二-压缩包分析" class="headerlink" title="实验二 压缩包分析"></a>实验二 压缩包分析</h2><p>使用winhex打开康康~</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844174.png" alt="image-20210805160808997"></p>
-<p>伪加密，但我第一次找错位置了，不该改上面的位置~<em>(:з」∠)</em></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844512.png" alt="image-20210805161214522"></p>
-<p>应该把这个1改成0</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844775.png" alt="image-20210805161319025"></p>
-<p>就能解压了</p>
-<p>解压以后出来新的压缩包，继续用winhex康康</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844902.png" alt="image-20210805161431174"></p>
-<p>奇数，真加密了，爆破叭~<em>(:з」∠)</em></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844407.png" alt="image-20210805161527959"></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130844479.png" alt="img"></p>
-<p>当我使用不同的软件爆破了n次以后（里面压缩包套压缩包），我死了，决定写python脚本了~</p>
-<pre><code>import os
-import zipfile
-
-#dir = &quot;C:\\Users\\brighten\\Desktop\\ff\\&quot;
-dir = &quot;D:\\f盘\\python\\pycharm\\222\\666\\&quot;
-l=[...]
-# for line in passFile.readlines():
-n = 0
-s2 = &quot;&quot;
-
-
-def jieya():
-    i = &quot;2.zip&quot;
-    p = &#39;1&#39;
-    for x in range(10000):
-        ss = i[:i.find(&quot;.&quot;)]
-        print(i)
-        zpf = zipfile.ZipFile(dir + ss + &quot;.zip&quot;)
-
-        list = zpf.namelist()  # 得到压缩包里所有文件
-        for f in list:
-            for line in l:
-                try:
-                    password = line.strip(&#39;\n&#39;)
-                    # srcfile.extractall(path=&#39;C:\\Users\\Administrator\\Desktop\\&#39;, members=zfile.namelist(),
-                    zpf.extract(f, dir, password.encode(&#39;utf-8&#39;))
-                    if zpf.extract(f, dir, password.encode(&#39;utf-8&#39;)):
-                        print(password.encode(&#39;utf-8&#39;))
-                    break
-                except:
-                    pass
-            #zpf.extract(f, dir, ss.encode(&#39;utf-8&#39;))  # 循环解压文件到指定目录，密码
-
-        print(ss + &quot;解压成功&quot; + str(f))
-        zpf.close()
-        os.remove(p+&quot;.zip&quot;)
-        p=ss
-        print(x)
-
-
-        i = str(f)
-
-#这里注释掉的代码是一个字典，记录重复的文件名，没有用
-&#39;&#39;&#39;t = &#123;&#125;
-for i in range(10000):
-    s = str(i)
-    while len(s) &lt; 4:
-        s = &#39;0&#39; + s
-    t[s] = False&#39;&#39;&#39;
-
-jieya()
+<p>前面是常规的信息配置没什么好说的，photos就是这个页面的顶部图片，在</p>
+<pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=100% height=450 src=&quot;//music.163.com/outchain/player?type=0&amp;id=762797776&amp;auto=1&amp;height=430&quot;&gt;&lt;/iframe&gt;
 </code></pre>
-<p>l[…]是字典，太长了不写了，本来以为是读文件太慢所以塞到列表里了，后来发现其实还是爆破太慢~</p>
-<pre><code>s=&#39;&#39;
-s1=&#39;&#39;
-for a in range(10):
-    for b in range(10):
-        for c in range(10):
-            for d in range(10):
-                s=s+str(a)+str(b)+str(c)+str(d)
-                #print(s)
-                s1 = s1 + &quot;&#39;&quot; + s + &quot;&#39;&quot; + &#39;,&#39;
-                s=&#39;&#39;
-
-print(s1)
+<p><img src="https://cdn.jsdelivr.net/gh/yremp2/image@2.0/teach2.png" alt="img"></p>
+<p>中需要改一下id，这个id就是网易云音乐歌单id，怎么获取如下图：</p>
+<p>登录网页版网易云音乐，打开歌单，在地址栏中可以看到</p>
+<pre><code>https://music.163.com/#/playlist?id=762797776
 </code></pre>
-<p>以上是字典生成算法</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845727.png" alt="image-20210805170226143"></p>
-<p>3s爆破一层，碎觉的时候开始挖矿~</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845850.png" alt="image-20210805170448398"></p>
-<p>睡醒了就爆破好啦，还不到1000层~</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845245.png" alt="image-20210805172111833"></p>
-<p>flag{6pLYbihLkXKUIeZqMt59ET5LKrxg9N}</p>
-<p>PS：给瑶瑶准备了一份代码，正式提交的时候会删除(｡･･｡)ﾉ♡ </p>
-<pre><code>import os
-import zipfile
-import base64
+<p>其中id后面的数字复制，粘贴到代码里面的id后面就可以显示自己的歌单了。</p>
+<h4 id="PS："><a href="#PS：" class="headerlink" title="PS："></a>PS：</h4><p>有的歌生成不了外链，放进去生成就是空白，只能移出去</p>
+<h3 id="关于功能中的与我对话功能"><a href="#关于功能中的与我对话功能" class="headerlink" title="关于功能中的与我对话功能"></a>关于功能中的与我对话功能</h3><p> /source/about/index.md</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109090846425.png" alt="image-20210909084500574"></p>
+<p>右键，Goto Definition就能去改对话了</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109092115770.png" alt="image-20210909211547415"></p>
+<p>有三个，选第一个</p>
+<h3 id="关于主页视频播放"><a href="#关于主页视频播放" class="headerlink" title="关于主页视频播放"></a>关于主页视频播放</h3><p>参考知乎回答：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/290690588/answer/471324014">https://www.zhihu.com/question/290690588/answer/471324014</a></p>
+<p>去bilibili找找视频_(:з」∠)_</p>
+<p>用个火狐插件，打开视频直接点下载就行了，是个flv形式</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109091932361.png" alt="image-20210909193206909"></p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://maruko.appinn.me/">https://maruko.appinn.me/</a></p>
+<img src="https://gitee.com/Sueyoki/ctf/raw/master/202109091935403.jpeg" alt="img" style="zoom:80%;" />
 
-dir = &quot;D:\\f盘\\python\\pycharm\\222\\666\\&quot;
+<p>确实好用~</p>
+<p>视频大于20mb的GitHub没法访问，可以用压制</p>
+<img src="https://gitee.com/Sueyoki/ctf/raw/master/202109092239458.png" alt="image-20210909223931853" style="zoom:67%;" />
 
-
-n = 0
-
-i = &quot;NzI2NQ==.zip&quot;
-for x in range(10000):
-    ss = i[:i.find(&quot;.&quot;)]
-    print(i)
-    zpf = zipfile.ZipFile(dir + ss + &quot;.zip&quot;)
-    list = zpf.namelist()  # 得到压缩包里所有文件
-
-    for f in list:
-        zpf.extract(f, dir, base64.b64decode(ss))  # 循环解压文件到指定目录，密码
-    print(ss + &quot;解压成功&quot; + str(f))
-    zpf.close()
-    os.remove(ss + &quot;.zip&quot;)
-    print(x)
-    i = str(f)
+<h6 id="CRF值在18以下为无损，18-22为高质量，22-27为中等质量，51质量最差。"><a href="#CRF值在18以下为无损，18-22为高质量，22-27为中等质量，51质量最差。" class="headerlink" title="CRF值在18以下为无损，18-22为高质量，22-27为中等质量，51质量最差。"></a>CRF值在18以下为无损，18-22为高质量，22-27为中等质量，51质量最差。</h6><p>CRF越大压缩的越大，画质越差~</p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/q906270629/article/details/115394248">https://blog.csdn.net/q906270629/article/details/115394248</a></p>
+<p>如果还是不行，提示大于20mb，把cdn改成@master,有的就行了_(:з」∠)_</p>
+<h4 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h4><p>酷我音乐的mv可以属性打开文件夹，temp文件夹里有缓存的MP4</p>
+<h3 id="全局搜索功能"><a href="#全局搜索功能" class="headerlink" title="全局搜索功能"></a>全局搜索功能</h3><p>有个变量名想改改，但找不到怎么办~</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109100053283.png" alt="img"></p>
+<p>右键文件夹直接搜算全部文件夹，快乐~</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109100127669.png" alt="53"></p>
+<p>这个sitename导致了部分网页下面作者名字变成sitename，比如关于我？</p>
+<pre><code>D:\博客盘\blog\Sueyoki\themes\Sakura\_config.yml:
+    1  # site name
+    2  prefixName: 巫女Sueyoki
+    3: siteName: の森林
+    4  author: Sueyoki
+    5  # favicon and site master avatar
 </code></pre>
-<p>实际上压缩包密码是文件名的base64反编，代码里的 i 填写压缩包的名字~<em>(:з」∠)</em></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108182105773.png" alt="image-20210805172904239"></p>
-<h2 id="实验三-键盘流量分析"><a href="#实验三-键盘流量分析" class="headerlink" title="实验三 键盘流量分析"></a>实验三 键盘流量分析</h2><p>wireshark打开流量包</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845911.png" alt="image-20210807102536283"></p>
-<p>协议是usb端口的，题干也说明了是键盘流量分析</p>
-<p>就是有垃圾杂包</p>
-<p>usb.src == “1.6.2”</p>
-<p>把有用的包筛选出来，然后</p>
-<p>文件 》导出特殊分组 》保存为 2.pcapng</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845720.png" alt="image-20210807102636912"></p>
-<p>cmd先进入wireshark安装目录，把2.pcapng也放进去（懒得配环境变量</p>
-<p>tshark -r 2.pcapng -T fields -e usb.capdata &gt; usbdata.txt</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845712.png" alt="image-20210807103421309"></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845845.png" alt="img"></p>
-<p>然鹅我的和别人的长得不一样呜呜呜~</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845285.png" alt="4"></p>
-<p>垃圾wireshark，一会就把它删掉~ </p>
-<p>​                                                              <img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845958.jpg" alt="img"></p>
-<p>还要调格式</p>
-<pre><code>f=open(&#39;usbdata.txt&#39;,&#39;r&#39;)
-fi=open(&#39;out.txt&#39;,&#39;w&#39;)
-while 1:
-    a=f.readline().strip()
-    if a:
-        if len(a)==16: # 鼠标流量的话len改为8
-            out=&#39;&#39;
-            for i in range(0,len(a),2):
-                if i+2 != len(a):
-                    out+=a[i]+a[i+1]+&quot;:&quot;
-                else:
-                    out+=a[i]+a[i+1]
-            fi.write(out)
-            fi.write(&#39;\n&#39;)
-    else:
-        break
-
-fi.close()
+<p>所以在这个文件下加个author变量，然后替换掉图2中的sitename即可</p>
+<p>图1我只改了 mashiro_option.author_name = “&lt;%- theme.author%&gt;”;</p>
+<p>不知道有什么用，反正改了也没出问题_(:з」∠)_</p>
+<p>themes\Sakura\layout\donate.ejs</p>
+<p>里面有个hojun，改成自己就行</p>
+<h3 id="关于归档和清单栏修改"><a href="#关于归档和清单栏修改" class="headerlink" title="关于归档和清单栏修改"></a>关于归档和清单栏修改</h3><p>这里想添加一个新的category栏CTF，要改两个地方</p>
+<p>themes/Sakura/languages/zh-cn.yml</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109151025436.png" alt="image-20210915102517041"></p>
+<p>themes/Sakura/source/_config.yml</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109151027582.png" alt="image-20210915102715029"></p>
+<p>加上这两行就行了，fa是图标font awesome 缩写（自己查</p>
+<p>清单页面修改也差不多</p>
+<h3 id="关于文章发布"><a href="#关于文章发布" class="headerlink" title="关于文章发布"></a>关于文章发布</h3><p>在source/_posts文件夹下添加md文章</p>
+<p>示例</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109151746883.png" alt="image-20210915174619254"></p>
+<p>在文章开头，右键》插入》YAML Front Matter</p>
+<p>然后复制进去就行了，各种描述自己改改</p>
+<pre><code class="java">title: 使用git push提交blog
+author: Sueyoki
+avatar: https://cdn.jsdelivr.net/gh/Sueyoki/CDN@master/img/custom/avatar.png
+authorLink: hojun.cn
+authorAbout: 一只古灵古灵的精怪
+authorDesc: 寒鸦向暖，枯木逢春~
+categories: 技术
+date: 2021-08-27 22:16:01
+comments: true
+tags: 
+ - web
+ - 悦读
+keywords: Sakura
+description: hexo提交有点问题，直接push
+photos: https://gitee.com/Sueyoki/picture/raw/master/pic/img1.jpg                      #这里填封面图片
 </code></pre>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845861.png" alt="image-20210807104344679"></p>
-<p>调完格式就能抄脚本了_(:з」∠)_</p>
-<pre><code>normalKeys = &#123;
-    &quot;04&quot;:&quot;a&quot;, &quot;05&quot;:&quot;b&quot;, &quot;06&quot;:&quot;c&quot;, &quot;07&quot;:&quot;d&quot;, &quot;08&quot;:&quot;e&quot;,
-    &quot;09&quot;:&quot;f&quot;, &quot;0a&quot;:&quot;g&quot;, &quot;0b&quot;:&quot;h&quot;, &quot;0c&quot;:&quot;i&quot;, &quot;0d&quot;:&quot;j&quot;,
-     &quot;0e&quot;:&quot;k&quot;, &quot;0f&quot;:&quot;l&quot;, &quot;10&quot;:&quot;m&quot;, &quot;11&quot;:&quot;n&quot;, &quot;12&quot;:&quot;o&quot;,
-      &quot;13&quot;:&quot;p&quot;, &quot;14&quot;:&quot;q&quot;, &quot;15&quot;:&quot;r&quot;, &quot;16&quot;:&quot;s&quot;, &quot;17&quot;:&quot;t&quot;,
-       &quot;18&quot;:&quot;u&quot;, &quot;19&quot;:&quot;v&quot;, &quot;1a&quot;:&quot;w&quot;, &quot;1b&quot;:&quot;x&quot;, &quot;1c&quot;:&quot;y&quot;,
-        &quot;1d&quot;:&quot;z&quot;,&quot;1e&quot;:&quot;1&quot;, &quot;1f&quot;:&quot;2&quot;, &quot;20&quot;:&quot;3&quot;, &quot;21&quot;:&quot;4&quot;,
-         &quot;22&quot;:&quot;5&quot;, &quot;23&quot;:&quot;6&quot;,&quot;24&quot;:&quot;7&quot;,&quot;25&quot;:&quot;8&quot;,&quot;26&quot;:&quot;9&quot;,
-         &quot;27&quot;:&quot;0&quot;,&quot;28&quot;:&quot;&lt;RET&gt;&quot;,&quot;29&quot;:&quot;&lt;ESC&gt;&quot;,&quot;2a&quot;:&quot;&lt;DEL&gt;&quot;, &quot;2b&quot;:&quot;\t&quot;,
-         &quot;2c&quot;:&quot;&lt;SPACE&gt;&quot;,&quot;2d&quot;:&quot;-&quot;,&quot;2e&quot;:&quot;=&quot;,&quot;2f&quot;:&quot;[&quot;,&quot;30&quot;:&quot;]&quot;,&quot;31&quot;:&quot;\\&quot;,
-         &quot;32&quot;:&quot;&lt;NON&gt;&quot;,&quot;33&quot;:&quot;;&quot;,&quot;34&quot;:&quot;&#39;&quot;,&quot;35&quot;:&quot;&lt;GA&gt;&quot;,&quot;36&quot;:&quot;,&quot;,&quot;37&quot;:&quot;.&quot;,
-         &quot;38&quot;:&quot;/&quot;,&quot;39&quot;:&quot;&lt;CAP&gt;&quot;,&quot;3a&quot;:&quot;&lt;F1&gt;&quot;,&quot;3b&quot;:&quot;&lt;F2&gt;&quot;, &quot;3c&quot;:&quot;&lt;F3&gt;&quot;,&quot;3d&quot;:&quot;&lt;F4&gt;&quot;,
-         &quot;3e&quot;:&quot;&lt;F5&gt;&quot;,&quot;3f&quot;:&quot;&lt;F6&gt;&quot;,&quot;40&quot;:&quot;&lt;F7&gt;&quot;,&quot;41&quot;:&quot;&lt;F8&gt;&quot;,&quot;42&quot;:&quot;&lt;F9&gt;&quot;,&quot;43&quot;:&quot;&lt;F10&gt;&quot;,
-         &quot;44&quot;:&quot;&lt;F11&gt;&quot;,&quot;45&quot;:&quot;&lt;F12&gt;&quot;&#125;
-shiftKeys = &#123;
-    &quot;04&quot;:&quot;A&quot;, &quot;05&quot;:&quot;B&quot;, &quot;06&quot;:&quot;C&quot;, &quot;07&quot;:&quot;D&quot;, &quot;08&quot;:&quot;E&quot;,
-     &quot;09&quot;:&quot;F&quot;, &quot;0a&quot;:&quot;G&quot;, &quot;0b&quot;:&quot;H&quot;, &quot;0c&quot;:&quot;I&quot;, &quot;0d&quot;:&quot;J&quot;,
-      &quot;0e&quot;:&quot;K&quot;, &quot;0f&quot;:&quot;L&quot;, &quot;10&quot;:&quot;M&quot;, &quot;11&quot;:&quot;N&quot;, &quot;12&quot;:&quot;O&quot;,
-       &quot;13&quot;:&quot;P&quot;, &quot;14&quot;:&quot;Q&quot;, &quot;15&quot;:&quot;R&quot;, &quot;16&quot;:&quot;S&quot;, &quot;17&quot;:&quot;T&quot;,
-        &quot;18&quot;:&quot;U&quot;, &quot;19&quot;:&quot;V&quot;, &quot;1a&quot;:&quot;W&quot;, &quot;1b&quot;:&quot;X&quot;, &quot;1c&quot;:&quot;Y&quot;,
-         &quot;1d&quot;:&quot;Z&quot;,&quot;1e&quot;:&quot;!&quot;, &quot;1f&quot;:&quot;@&quot;, &quot;20&quot;:&quot;#&quot;, &quot;21&quot;:&quot;$&quot;,
-          &quot;22&quot;:&quot;%&quot;, &quot;23&quot;:&quot;^&quot;,&quot;24&quot;:&quot;&amp;&quot;,&quot;25&quot;:&quot;*&quot;,&quot;26&quot;:&quot;(&quot;,&quot;27&quot;:&quot;)&quot;,
-          &quot;28&quot;:&quot;&lt;RET&gt;&quot;,&quot;29&quot;:&quot;&lt;ESC&gt;&quot;,&quot;2a&quot;:&quot;&lt;DEL&gt;&quot;, &quot;2b&quot;:&quot;\t&quot;,&quot;2c&quot;:&quot;&lt;SPACE&gt;&quot;,
-          &quot;2d&quot;:&quot;_&quot;,&quot;2e&quot;:&quot;+&quot;,&quot;2f&quot;:&quot;&#123;&quot;,&quot;30&quot;:&quot;&#125;&quot;,&quot;31&quot;:&quot;|&quot;,&quot;32&quot;:&quot;&lt;NON&gt;&quot;,&quot;33&quot;:&quot;\&quot;&quot;,
-          &quot;34&quot;:&quot;:&quot;,&quot;35&quot;:&quot;&lt;GA&gt;&quot;,&quot;36&quot;:&quot;&lt;&quot;,&quot;37&quot;:&quot;&gt;&quot;,&quot;38&quot;:&quot;?&quot;,&quot;39&quot;:&quot;&lt;CAP&gt;&quot;,&quot;3a&quot;:&quot;&lt;F1&gt;&quot;,
-          &quot;3b&quot;:&quot;&lt;F2&gt;&quot;, &quot;3c&quot;:&quot;&lt;F3&gt;&quot;,&quot;3d&quot;:&quot;&lt;F4&gt;&quot;,&quot;3e&quot;:&quot;&lt;F5&gt;&quot;,&quot;3f&quot;:&quot;&lt;F6&gt;&quot;,&quot;40&quot;:&quot;&lt;F7&gt;&quot;,
-          &quot;41&quot;:&quot;&lt;F8&gt;&quot;,&quot;42&quot;:&quot;&lt;F9&gt;&quot;,&quot;43&quot;:&quot;&lt;F10&gt;&quot;,&quot;44&quot;:&quot;&lt;F11&gt;&quot;,&quot;45&quot;:&quot;&lt;F12&gt;&quot;&#125;
-output = []
-keys = open(&#39;out.txt&#39;)
-for line in keys:
-    try:
-        if line[0]!=&#39;0&#39; or (line[1]!=&#39;0&#39; and line[1]!=&#39;2&#39;) or line[3]!=&#39;0&#39; or line[4]!=&#39;0&#39; or line[9]!=&#39;0&#39; or line[10]!=&#39;0&#39; or line[12]!=&#39;0&#39; or line[13]!=&#39;0&#39; or line[15]!=&#39;0&#39; or line[16]!=&#39;0&#39; or line[18]!=&#39;0&#39; or line[19]!=&#39;0&#39; or line[21]!=&#39;0&#39; or line[22]!=&#39;0&#39; or line[6:8]==&quot;00&quot;:
-             continue
-        if line[6:8] in normalKeys.keys():
-            output += [[normalKeys[line[6:8]]],[shiftKeys[line[6:8]]]][line[1]==&#39;2&#39;]
-        else:
-            output += [&#39;[unknown]&#39;]
-    except:
-        pass
-
-keys.close()
-
-flag=0
-print(&quot;&quot;.join(output))
-for i in range(len(output)):
-    try:
-        a=output.index(&#39;&lt;DEL&gt;&#39;)
-        del output[a]
-        del output[a-1]
-    except:
-        pass
-
-for i in range(len(output)):
-    try:
-        if output[i]==&quot;&lt;CAP&gt;&quot;:
-            flag+=1
-            output.pop(i)
-            if flag==2:
-                flag=0
-        if flag!=0:
-            output[i]=output[i].upper()
-    except:
-        pass
-
-print (&#39;output :&#39; + &quot;&quot;.join(output))
+<h3 id="关于评论系统"><a href="#关于评论系统" class="headerlink" title="关于评论系统"></a>关于评论系统</h3><p>因为用的Valine，需要注册LeanCloud，记得选国际版</p>
+<p><a target="_blank" rel="noopener" href="https://console.leancloud.app/">https://console.leancloud.app</a></p>
+<p>这里推荐gmail，不用实名_(:з」∠)_</p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+<p>和评论相关的配置在： /themes/sakura/config.yml </p>
+<pre><code class="java"># Valine
+valine: true
+v_appId: 填自己的
+v_appKey: 填自己的
 </code></pre>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130845741.png" alt="image-20210807131411417"></p>
-<p>已经做到底了，完结撒花~(｡･･｡)ﾉ♡ </p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202108130846085.jpg" alt="img"> </p>
+<p>想删除垃圾评论打开Valine后台</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109221737052.png" alt="1"></p>
+<p>从这进去</p>
+<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109221740823.png" alt="2 (2)"></p>
+<p>我是把user和comment两条记录都删了，你们自己试试~<em>(:з」∠)</em></p>
 
         </div>
         <!-- .entry-content -->
@@ -706,15 +530,15 @@ print (&#39;output :&#39; + &quot;&quot;.join(output))
           
             <div class="post-nepre half previous">
           
-            <a href="/2021/08/25/2021BIN%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" rel="prev">
+            <a href="/2021/09/04/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/Sueyoki/picture/raw/master/pic/img4.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img5.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/Sueyoki/picture/raw/master/pic/img5.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                2021BIN实验报告</h3>
+                关于webp，png，jpg图片转换</h3>
                 <hr>
               </div>
             </a>
@@ -724,15 +548,15 @@ print (&#39;output :&#39; + &quot;&quot;.join(output))
           
             <div class="post-nepre half next">
           
-            <a href="/2021/08/25/2021web%E5%AE%9E%E9%AA%8C/" rel="next">
+            <a href="/2021/08/27/gitee%E4%BB%93%E5%BA%93%E4%BD%BF%E7%94%A8/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img7.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/Sueyoki/picture/raw/master/pic/img7.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/Sueyoki/picture/raw/master/pic/img6.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/Sueyoki/picture/raw/master/pic/img6.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                2021Web实验报告</h3>
+                Gitee仓库使用（附gitee pages参考）</h3>
                 <hr>
               </div>
             </a>

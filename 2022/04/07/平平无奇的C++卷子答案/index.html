@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2021/12 | Sueyoki</title>
+  <title itemprop="name">平平无奇的C++卷子答案 | Sueyoki</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -347,367 +347,1011 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img23.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img23.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      平平无奇的C++卷子答案</h1>
+      <p class="entry-census">
+        <span>
+          <a href="hojun.cn">
+            <img src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@master/img/custom/avatar.png">
+          </a>
+        </span>
+        <span>
+          <a href="hojun.cn">Sueyoki</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2022-4-7<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="2020春C-考试答案"><a href="#2020春C-考试答案" class="headerlink" title="2020春C++考试答案"></a>2020春C++考试答案</h1><h3 id="一、给出程序的运行结果（本题-20-分，每小题-5-分）"><a href="#一、给出程序的运行结果（本题-20-分，每小题-5-分）" class="headerlink" title="一、给出程序的运行结果（本题 20 分，每小题 5 分）"></a>一、给出程序的运行结果（本题 20 分，每小题 5 分）</h3><p>1、数组 </p>
+<pre><code class="c++">#include &lt;iostream&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int a[10];
+public:
+    test()
+    &#123;
+        int i;
+        for(i=0; i&lt;10; ++i)
+        &#123;
+            a[i]=i*10;
+        &#125;
+    &#125;
+    int turn()
+    &#123;
+        int temp=a[0],i;
+        for(i=0; i&lt;10; ++i)
+        &#123;
+            if(temp&lt;a[i])
+                temp=a[i];
+        &#125;
+        return temp;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    cout&lt;&lt;t.turn()&lt;&lt;endl;
+    return 0;
+&#125;
+//90
+</code></pre>
+<p>2、判断 2020 年某月的天数 </p>
+<pre><code class="c++">#include &lt;iostream&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int m;
+public:
+    test()
+    &#123;
+        m=1;
+    &#125;
+    test(int mm)
+    &#123;
+        m=mm;
+    &#125;
+    void input()
+    &#123;
+        cout&lt;&lt;&quot;input:&quot;;
+        cin&gt;&gt;m;
+    &#125;
+    int output()
+    &#123;
+        if(m==2)
+            return 29;
+        else if(m==4||m==6||m==9||m==11)
+            return 30;
+        else
+            return 31;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t(7);
+    cout&lt;&lt;t.output()&lt;&lt;endl;
+    return 0;
+&#125;
+//31
+</code></pre>
+<p>3、找零钱的问题 </p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int n;
+public:
+    test()
+    &#123;
+        n=23;
+    &#125;
+    test(int nn)
+    &#123;
+        n=nn;
+    &#125;
+    int output()
+    &#123;
+        int sum=0,i,j;
+        i=n/5;
+        j=n%5;
+        sum=sum+i;
+        i=j/2;
+        j=j%2;
+        sum=sum+i;
+        sum=sum+j;
+        cout&lt;&lt;&quot;total number:&quot;&lt;&lt;sum&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.output();
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+//6
+</code></pre>
+<p>4、类模板</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+#include &lt;string&gt; 
+using namespace std;
+template &lt;class T&gt;//模板语句
+class test
+&#123;
+private:
+    T n;
+public:
+    test(T nn)
+    &#123;
+        n=nn;
+    &#125;
+    void turn()
+    &#123;
+        if(typeid(T)==typeid(int))
+        &#123;
+            cout&lt;&lt;n*n&lt;&lt;endl;
+        &#125;
+        if(typeid(T)==typeid(string))
+        &#123;
+            cout&lt;&lt;n+n&lt;&lt;endl;
+        &#125;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test &lt;int&gt; t1(8);
+    test &lt;string&gt; t2(&quot;hello!&quot;);
+    t1.turn();
+    return 0;
+&#125;
+//64
+//模板感觉就是不事先声明参数的类型，让它自己去判断参数类型，更有通用性
+</code></pre>
+<h3 id="二、程序改错（本题-20-分，每小题-5-分）"><a href="#二、程序改错（本题-20-分，每小题-5-分）" class="headerlink" title="二、程序改错（本题 20 分，每小题 5 分）"></a>二、程序改错（本题 20 分，每小题 5 分）</h3><p>下列每个程序中只有一处或一个语句错误，请写出 错误的语句和修改后的正确语句（直接写在答题纸上）。</p>
+<p>1、二进制文件-倒序 </p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;fstream&gt;
+using namespace std;
+class File
+&#123;
+private:
+    fstream f;
+    string s;
+    int len;
+public:
+    File()
+    &#123;
+        f.open(&quot;test.doc&quot;,ios::binary|ios::in|ios::out);
+    &#125;
+    ~File()
+    &#123;
+        f.close();
+    &#125;
+    void Reverse()
+    &#123;
+        string temp;
+        //temp.resize(s.size()); //加上这句就对了
+        //string temp(s.size(),&#39; &#39;);//改法2把上面定义改成这句    
+        for(int i=0; i&lt;s.size(); ++i)
+        &#123;
+            temp[i]=s[s.size()-i-1];
+        &#125;
+        s=temp;
+    &#125;
+    void Read()
+    &#123;
+        f.seekg(0,ios::end);
+        len=f.tellg();
+        s.resize(len);
+        f.seekg(0,ios::beg);
+        f.read((char*)s.c_str(),len);
+    &#125;
+    void Write()
+    &#123;
+        f.seekp(0,ios::beg);
+        f.write((char*)s.c_str(),s.size());
+    &#125;
+&#125;;
+int main()
+&#123;
+    File f;
+    f.Read();
+    f.Reverse();
+    f.Write();
+    return 0;
+&#125;
+//见注释，下同
+</code></pre>
+<p>2 、继承与派生</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+using namespace std;
+class point
+&#123;
+protected:
+    int x1,y1;
+public:
+    point()
+    &#123;
+        x1=0;
+        y1=0;
+    &#125;
+    point(int xx1,int yy1)
+    &#123;
+        x1=xx1;
+        y1=yy1;
+    &#125;
+
+    void display()
+    &#123;
+        cout&lt;&lt;&quot;x1=&quot;&lt;&lt;x1&lt;&lt;endl;
+        cout&lt;&lt;&quot;y1=&quot;&lt;&lt;y1&lt;&lt;endl;
+    &#125;
+&#125;;
+class line:public point
+&#123;
+protected:
+
+    int x2,y2;
+public:
+    line()
+    &#123;
+        x2=0;
+        y2=0;
+    &#125;
+
+    line(int xx2,int yy2)
+   //line(int xx2,int yy2,int xx1,int yy1):point(xx1,yy1)//改成这句就对了
+    &#123;
+        x2=xx2;
+        y2=yy2;
+    &#125;
+
+    void display()
+    &#123;
+        cout&lt;&lt;&quot;x1=&quot;&lt;&lt;x1&lt;&lt;endl;
+        cout&lt;&lt;&quot;y1=&quot;&lt;&lt;y1&lt;&lt;endl;
+        cout&lt;&lt;&quot;x2=&quot;&lt;&lt;x2&lt;&lt;endl;
+        cout&lt;&lt;&quot;y2=&quot;&lt;&lt;y2&lt;&lt;endl;
+    &#125;
+
+&#125;;
+
+int main()
+
+&#123;
+
+    line L1(2,3,4,5);
+    L1.display();
+    return 0;
+
+&#125;
+
+</code></pre>
+<p>3 、字符串 -取数字子串并在其数值上加 上 100</p>
+<pre><code class="c++">#include&lt;iostream&gt; #include &lt;sstream&gt;
+#include &lt;string&gt;
+using namespace std;
+class test
+&#123;
+private:
+    string s;
+    int pos;
+public:
+    void input()
+    &#123;
+        cout&lt;&lt;&quot;input a string:&quot;;
+        cin&gt;&gt;s;
+    &#125; int str2num(string s)
+    &#123;
+        stringstream ss;
+        int temp;
+        ss&lt;&lt;s;
+        ss&gt;&gt;temp;
+        return temp;
+    &#125; void output()
+    &#123;
+        int i=0;
+        while(i&lt;s.size())
+        &#123;
+            if(s[i]&gt;=&#39;0&#39;&amp;&amp;s[i]&lt;=&#39;9&#39;)
+            //if(!(s[i]&gt;=&#39;0&#39;&amp;&amp;s[i]&lt;=&#39;9&#39;))//不是数字就erase，就只剩数字了
+            &#123;
+                s.erase(i,1);  
                 
-                <h3 class="al_year">2022年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      04月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2022/04/07/%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84C++%E5%8D%B7%E5%AD%90%E7%AD%94%E6%A1%88/">
-                          <span style="color:#0bf;">
-                          07日22:16:01</span>
-                          平平无奇的C++卷子答案
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      02月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2022/02/09/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bc%E7%9B%98%E6%B8%85%E7%90%86/">
-                          <span style="color:#0bf;">
-                          09日22:16:01</span>
-                          记录了一下清理c盘的日常
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/12/18/%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/">
-                          <span style="color:#0bf;">
-                          18日22:16:01</span>
-                          常见汇编指令
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/11/%E5%85%B3%E4%BA%8Epandas%E5%BA%93%E4%BD%BF%E7%94%A8/">
-                          <span style="color:#0bf;">
-                          11日22:16:01</span>
-                          关于pandas库使用
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/10/ZeroBot%E6%9C%BA%E5%99%A8%E4%BA%BAQQ/">
-                          <span style="color:#0bf;">
-                          10日22:16:01</span>
-                          ZeroBot机器人QQ
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      11月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/11/20/%E6%B8%85%E7%90%86git%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95/">
-                          <span style="color:#0bf;">
-                          20日22:16:01</span>
-                          清理git提交记录
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/11/09/Python%E7%9A%84socket%E9%80%9A%E4%BF%A1/">
-                          <span style="color:#0bf;">
-                          09日22:16:01</span>
-                          Pytohn实现不同PC之间的进程通信
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      10月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/10/05/Chive2021autumn.Crypto%E7%9A%84wp/">
-                          <span style="color:#0bf;">
-                          05日22:16:01</span>
-                          Chive2021autumn.Crypto的wp
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      09月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/09/04/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2/">
-                          <span style="color:#0bf;">
-                          04日22:16:01</span>
-                          关于webp，png，jpg图片转换
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      08月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/08/27/Sakura%E7%BE%8E%E5%8C%96/">
-                          <span style="color:#0bf;">
-                          27日22:16:01</span>
-                          Sakura主题美化
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/27/gitee%E4%BB%93%E5%BA%93%E4%BD%BF%E7%94%A8/">
-                          <span style="color:#0bf;">
-                          27日22:16:01</span>
-                          Gitee仓库使用（附gitee pages参考）
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/27/%E5%85%B3%E4%BA%8ESakura%E5%9C%A8%E6%90%AD%E5%BB%BAjsDeliver+Github%E4%B8%8ACDN%E7%9A%84%E6%8C%87%E5%8D%97/">
-                          <span style="color:#0bf;">
-                          27日22:16:01</span>
-                          关于Sakura在搭建jsDeliver+Github上CDN的指南
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/27/%E4%BD%BF%E7%94%A8git%20push%E6%8F%90%E4%BA%A4blog/">
-                          <span style="color:#0bf;">
-                          27日22:16:01</span>
-                          使用git push提交blog
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/25/2021BIN%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">
-                          <span style="color:#0bf;">
-                          25日22:16:01</span>
-                          2021BIN实验报告
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/25/2021misc%E5%AE%9E%E9%AA%8C/">
-                          <span style="color:#0bf;">
-                          25日22:16:01</span>
-                          2021MISC实验报告
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/25/2021web%E5%AE%9E%E9%AA%8C/">
-                          <span style="color:#0bf;">
-                          25日22:16:01</span>
-                          2021Web实验报告
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/25/2021crypto%E5%AE%9E%E9%AA%8C/">
-                          <span style="color:#0bf;">
-                          25日22:16:01</span>
-                          2021Crypto实验报告
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/08/22/%E5%85%B3%E4%BA%8Epython%E4%B8%ADpip%E4%B8%8D%E5%A5%BD%E7%94%A8/">
-                          <span style="color:#0bf;">
-                          22日22:16:01</span>
-                          pip不是外部或内部命令以及python没反应问题
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+            &#125;
+            else ++i;
+        &#125;
+        cout&lt;&lt;s&lt;&lt;endl;
+        cout&lt;&lt;str2num(s)+100&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test A;
+    A.input();
+    A.output();
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+</code></pre>
+<p>4、容器-抽奖程序-在一个班级中随机抽取三名同学获奖 </p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int n;
+    vector&lt;int&gt;a;
+    vector&lt;int&gt;::operator p;
+    //vector&lt;int&gt;::iterator p;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        srand(time(0));
+        for(int i=0; i&lt;n; ++i)
+        &#123;
+            a.push_back(i+1);
+        &#125;
+    &#125; void select()
+    &#123;
+        int i,temp;
+        for(i=0; i&lt;3; ++i)
+        &#123;
+            p=a.begin();
+            temp=rand()%a.size();
+            p=p+temp;
+            cout&lt;&lt;*p&lt;&lt;endl;
+            a.erase(p);
+        &#125;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t(30);
+    t.select();
+    return 0;
+&#125;
+//迭代器定义错了
+</code></pre>
+<h3 id="三、程序填空（本题-20-分，每空-5-分）"><a href="#三、程序填空（本题-20-分，每空-5-分）" class="headerlink" title="三、程序填空（本题 20 分，每空 5 分）"></a>三、程序填空（本题 20 分，每空 5 分）</h3><p>在下列程序每个空白处填上一条语句，使程序完整。  请标注题号后，直接将答案写在答题纸上。 </p>
+<p>1、动态数组-给不及格的同学加分</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int n;
+    int* a;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        //------------------------------------------
+          a=new int[5] ;
+        //------------------------------------------
+    &#125;
+    void input()
+    &#123;
+        int i;
+        for(i=0; i&lt;n; ++i)
+        &#123;
+            cout&lt;&lt;&quot;input &quot;&lt;&lt;i+1&lt;&lt;&quot; :&quot;;
+            cin&gt;&gt;a[i];
+        &#125;
+    &#125;
+    void output()
+    &#123;
+        int i;
+        cout&lt;&lt;&quot;----------------&quot;&lt;&lt;endl;
+        for(i=0; i&lt;n; ++i)
+        &#123;
+            cout&lt;&lt;&quot;input &quot;&lt;&lt;i+1&lt;&lt;&quot; :&quot;&lt;&lt;a[i]&lt;&lt;endl;
+        &#125;
+    &#125;
+    void add()
+    &#123;
+        int i;
+        for(i=0; i&lt;n; ++i)
+        &#123;
+            if(a[i]==60)
+                a[i]=61;
+            else if(a[i]&lt;60)
+                a[i]=60;
+        &#125;
+    &#125;
+    ~test()
+
+    &#123;
+        delete a;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t(5);
+    t.input();
+    t.add();
+    t.output();
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+//加上横线中间那句就对了，下同
+</code></pre>
+<p>  2、容器-复合元素类型-成绩管理-输出最高最低分</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+using namespace std;
+struct student
+&#123;
+    int number;
+    double score;
+&#125;;
+class test
+&#123;
+private:
+    int n;
+    vector&lt;student&gt;a;
+    vector&lt;student&gt;::iterator p;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        student temp;
+        for(int i=0; i&lt;n; ++i)
+        &#123;
+            cout&lt;&lt;&quot;input number:&quot;;
+            cin&gt;&gt;temp.number;
+            cout&lt;&lt;&quot;input score:&quot;;
+            cin&gt;&gt;temp.score;
+            a.push_back(temp);
+        &#125;
+    &#125;
+    void browse()
+
+    &#123;
+        for(p=a.begin(); p!=a.end(); ++p)
+        &#123;
+            cout&lt;&lt;&quot;number:&quot;&lt;&lt;p-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p-&gt;score&lt;&lt;endl;
+        &#125;
+    &#125;
+    static sort1(student s1,student s2)
+    &#123;
+        //------------------------------------------
+           return s1.score&gt;s2.score;//倒序，从大到小
+        //------------------------------------------
+
+    &#125;
+    void SORT()
+    &#123;
+        sort(a.begin(),a.end(),sort1);
+    &#125;
+    void max_min()
+    &#123;
+        SORT();
+        p=a.begin();
+        cout&lt;&lt;&quot;max:&quot;&lt;&lt;p-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p-&gt;score&lt;&lt;endl;
+        p=a.end()-1;
+        cout&lt;&lt;&quot;min:&quot;&lt;&lt;p-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p-&gt;score&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t(3);
+    t.max_min();
+    return 0;
+&#125;
+</code></pre>
+<p>3、文本文件-从键盘输入一个整数并追加到 test.txt 中成为一个新行 </p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+class test
+&#123;
+private:
+    string s;
+    int n;
+    ofstream f;
+public:
+    test()
+    &#123;
+
+//------------------------------------------
+        f.open(&quot;test.txt&quot;,ios::out|ios::in);
+        f.seekp(0,ios::end);//seekp是写指针，移到文件尾
+//------------------------------------------
+        if(!f)
+            cout&lt;&lt;&quot;文件建立错误！&quot;&lt;&lt;endl;
+    &#125;
+    ~test()
+    &#123;
+        f.close();
+    &#125;
+    void turn()
+    &#123;
+        cout&lt;&lt;&quot;input a number:&quot;;
+        cin&gt;&gt;n;
+        f&lt;&lt;endl&lt;&lt;n;//这句
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.turn();
+    return 0;
+&#125;
+</code></pre>
+<p>4、异常处理-数组越界检查</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+using namespace std;
+
+class test
+&#123;
+private:
+    int n;
+    int a[10];
+public:
+    test(int nn)throw(int)
+    &#123;
+        n=nn;
+        if(n&gt;=10)
+        &#123;
+            throw 100;//这句
+        &#125;
+        else
+        &#123;
+            cout&lt;&lt;&quot;OK!&quot;&lt;&lt;endl;
+        &#125;
+    &#125;
+&#125;;
+
+
+int main()
+&#123;
+    try
+    &#123;
+        test(50);
+    &#125;
+//------------------------------------------
+    catch(int error)
+//------------------------------------------
+    &#123;
+        if(error==100)
+        &#123;
+            cout&lt;&lt;&quot;subscript out of range!&quot;&lt;&lt;endl;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h3 id="四、编程综合题（本题-40-分，每个函数或程序体-10-分）"><a href="#四、编程综合题（本题-40-分，每个函数或程序体-10-分）" class="headerlink" title="四、编程综合题（本题 40 分，每个函数或程序体 10 分）"></a>四、编程综合题（本题 40 分，每个函数或程序体 10 分）</h3><p>注意：不允许另外编写自定义函数。  请标注题号后，直接将答案写在答题纸上。  </p>
+<p> 1、某项体育赛事共有 N 个评委打分，满分为 10 分，不允许打负分。给某个选手打分后，去除一个最高分和一个最低分，剩余评委的分数相加为该选手的本轮得分。用类和链表实现该程序，构造函数规定评委人数 N。input 函数输入 N 个评委的打分，output 函数输出某选手的本轮得分。</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+struct score
+&#123;
+    int number;
+    score* next;
+&#125;;
+
+class test
+&#123;
+private:
+    int n;
+    score* head,* end,* p;
+public:
+    test()
+    &#123;
+        n=6;
+    &#125;
+
+
+    void input()
+    &#123;
+        head=new score;
+        end=head;
+        for(int i=1; i&lt;=n; ++i)
+        &#123;
+//------------------------------------------
+            p=new score;
+            cin&gt;&gt;p-&gt;number;    //这里注意头指针是空的，里面没数，但尾指针插入以后有数
+            end-&gt;next=p;
+            end=p;
+//------------------------------------------
+        &#125;
+        end-&gt;next=0;
+    &#125;
+    void output()
+    &#123;
+        int i=0;
+        int max=0,min=11;
+        int max_number=0,min_number=0;
+        p=head;
+        while(p-&gt;next!=0)
+        &#123;
+            ++i;
+            p=p-&gt;next;
+            if(p-&gt;number&gt;max)
+            &#123;
+                max=p-&gt;number;
+                max_number=i;
+            &#125;
+            if(p-&gt;number&lt;min)
+            &#123;
+                min=p-&gt;number;
+                min_number=i;
+            &#125;
+        &#125;
+        p=head;
+        i=0;
+        int sum=0;
+        while(p-&gt;next!=0)
+        &#123;
+            p=p-&gt;next;
+            ++i;
+            if(i!=max_number&amp;&amp;i!=min_number)
+            &#123;
+
+                sum=sum+p-&gt;number;
+            &#125;
+        &#125;
+        cout&lt;&lt;&quot;score=&quot;&lt;&lt;sum&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.input();
+    t.output();
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+</code></pre>
+<p>2、基类为点类，数据为一个点的坐标 x1、y1。子类为线段类，数据为两个端点的坐标 x1、y1 和 x2、y2。在类中对输出运算符进行重载，输出两个端点的坐标。对“&gt;”运算符进行重载,返回长度较长的线段。 </p>
+<pre><code class="C++">#include &lt;iostream&gt;
+using namespace std;
+class point
+&#123;
+protected:
+    int x1,y1;
+public:
+    point()
+    &#123;
+        x1=0;
+        y1=0;
+    &#125;
+     point(int xx1,int yy1)
+    &#123;
+        x1=xx1;
+        y1=yy1;
+    &#125;
+     void output()
+    &#123;
+        cout&lt;&lt;&quot;x1=&quot;&lt;&lt;x1&lt;&lt;endl;
+        cout&lt;&lt;&quot;y1=&quot;&lt;&lt;y1&lt;&lt;endl;
+    &#125;
+&#125;;
+
+class line:public point
+&#123;
+protected:
+    int x2,y2;
+public:
+
+    line()
+    &#123;
+        x2=0;
+        y2=0;
+    &#125;
+    line(int xx1,int yy1,int xx2,int yy2):point(xx1,yy1)
+    &#123;
+        x2=xx2;
+        y2=yy2;
+    &#125;
+    void output()
+    &#123;
+        cout&lt;&lt;&quot;x1=&quot;&lt;&lt;x1&lt;&lt;endl;
+        cout&lt;&lt;&quot;y1=&quot;&lt;&lt;y1&lt;&lt;endl;
+        cout&lt;&lt;&quot;x2=&quot;&lt;&lt;x2&lt;&lt;endl;
+        cout&lt;&lt;&quot;y2=&quot;&lt;&lt;y2&lt;&lt;endl;
+    &#125;
+     friend ostream&amp; operator&lt;&lt;(ostream&amp; os,line a)
+    &#123;
+        a.output();
+        return os;
+    &#125;
+    line operator &gt;(line L2)
+    &#123;
+//------------------------------------------
+      if((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)&gt;(L2.x1-L2.x2)*(L2.x1-L2.x2)+(L2.y1-L2.y2)*(L2.y1-L2.y2))
+      &#123;
+        return *this;   //直接返回当前类，不需要temp
+      &#125;
+      else return L2;
+        
+//------------------------------------------
+    &#125;
+&#125;;
+int main()
+&#123;
+    line L1(1,1,2,2);
+    line L2(3,3,5,5);
+    line L3=L1&gt;L2;
+    cout&lt;&lt;L3;
+    return 0;
+&#125;
+</code></pre>
+<p>3、四个方向控制小球运动，每按一下键盘，小球运动一步， ESC 键盘退出程序。 </p>
+<pre><code class="c++">#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include&lt;conio.h&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int x,y;
+    clock_t t;
+public:
+    test()
+    &#123;
+        x=5;
+        y=5;
+        t=clock();
+    &#125;
+    void gotoxy(int x,int y)
+    &#123;
+        HANDLE h;//句柄,对象的索引
+        COORD c;//结构体,坐标值
+        c.X=x;
+        c.Y=y;
+        h=GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleCursorPosition(h,c);
+    &#125;
+    void draw()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;●&quot;;
+    &#125;
+    void erase()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;  &quot;;
+    &#125;
+    void key(clock_t&amp; t,int tt)
+    &#123;
+        if(clock()-t&gt;tt)
+        &#123;
+//------------------------------------------
+            draw();
+            char c1,c2;
+            c1=getch();
+            if(c1==27)
+            &#123;
+                exit(0);
+            &#125;
+            else if(c1==-32)
+            &#123;
+                erase();
+                c2=getch();
+                switch(c2)
+                &#123;
+                case 72:
+                    y=(--y+25)%25;  //注意减到0以后并不会自动变正数，所以手动变正
+                    break;
+                case 75:
+                    x=(--x+80)%80;
+                    break;
+                case 77:
+                    x=(++x)%80;
+                    break;
+                case 80:
+                    y=(++y)%25;
+                    break;
+                &#125;
+            &#125;
+
+//------------------------------------------
+        &#125;
+
+    &#125;
+    void move()
+    &#123;
+        while(true)
+        &#123;
+            key(t,10);
+        &#125;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.move();
+    return 0;
+&#125;
+//这里注意小球占俩字符，erase要输出俩空格
+</code></pre>
+<p>  4、文本文件“英汉词典.txt”的每一行形如“abandonment n.放弃”。使用 map 装载英汉词典文件，使用.find 函数精确查找一个英文单词。</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+class test
+&#123;
+private:
+    fstream f;
+    string::size_type n;
+    map&lt;string,string&gt;a;
+    map&lt;string,string&gt;::iterator p;
+public:
+    test()
+    &#123;
+        string s,s1;
+        f.open(&quot;英汉词典.txt&quot;,ios::in);
+        while(true)
+        &#123;
+//------------------------------------------
+            string::size_type n,n1;  //换int也能跑
+            string temp;
+            getline(f,temp);
+            n=temp.find(&quot; &quot;,0);
+            s=temp.substr(0,n);
+            n1=temp.rfind(&quot; &quot;,temp.size()); //逆序查找
+            s1=temp.substr(n1+1,temp.size()-n1-1);
+            a.insert(pair&lt;string,string&gt;(s,s1));
+            if(f.eof())   //文件指针走到尾退出循环
+            &#123;
+                break;
+            &#125;
+//------------------------------------------
+        &#125;
+
+    &#125;
+    ~test()
+    &#123;
+        f.close();
+    &#125;
+    void FIND()
+    &#123;
+        string word;
+        cout&lt;&lt;&quot;input word:&quot;;
+        cin&gt;&gt;word;
+        p=a.find(word);
+        if(p!=a.end())
+        &#123;
+            cout&lt;&lt;p-&gt;second&lt;&lt;endl;
+        &#125;
+        else
+            cout&lt;&lt;&quot;no word!&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.FIND();
+    return 0;
+&#125;
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@master/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@master/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2022/02/09/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bc%E7%9B%98%E6%B8%85%E7%90%86/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img21.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img21.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                记录了一下清理c盘的日常</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "DIsRFBh44lz3G8FO59MXlQtJ-MdYXbMMI",
+        appKey: "t3lafjH9kXrdVkTMNRFvBkst",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="hojun.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@master/img/custom/avatar.png" itemprop="image" alt="Sueyoki" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="hojun.cn" itemprop="url" rel="author">Sueyoki</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一只古灵古灵的精怪</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

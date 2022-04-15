@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Gitee仓库使用（附gitee pages参考） | Sueyoki</title>
+  <title itemprop="name">记录下二进制和文件读写的区别 | Sueyoki</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -353,11 +353,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img6.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img6.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img24.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img24.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Gitee仓库使用（附gitee pages参考）</h1>
+      记录下二进制和文件读写的区别</h1>
       <p class="entry-census">
         <span>
           <a href="hojun.cn">
@@ -369,7 +369,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-8-27<span class="bull">
+        2022-4-15<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -383,23 +383,61 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Gitee仓库使用"><a href="#Gitee仓库使用" class="headerlink" title="Gitee仓库使用"></a>Gitee仓库使用</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cndarren/p/12125091.html">本地项目上传到码云(gitee)远程仓库(图文详解) - 星空流年 - 博客园 (cnblogs.com)</a></p>
-<p>参考上一篇在github仓库使用，大同小异，只挑重点和区别</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131159155.png" alt="img"></p>
-<p>新建文件夹右键git bash here以后</p>
-<p>必须先git init，然后下一步才能进行</p>
-<p>输入 git remote add origin 码云仓库地址  例如：git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/%E4%BD%A0%E7%9A%84%E7%A0%81%E4%BA%91%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E5%88%9B%E5%BB%BA%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D.git">https://gitee.com/你的码云用户名/你创建的仓库名.git</a></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131204529.png" alt="img"></p>
-<p> git pull origin master  //这步的作用是：将码云上的仓库pull到本地你新建的文件夹中</p>
-<p>然后把你要传的文件复制过去</p>
-<p>git status</p>
-<p>git add . </p>
-<p>git commit -m ‘第一次提交’      //把文件提交到仓库，单引号里随便改<br>git push      </p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131215649.png" alt="2"></p>
-<p>这里报了个bug，原因应该是github默认分支改成main了，gitee还是master，所以切换成master就好啦</p>
-<p>git checkout master</p>
-<p>然后进行上面四步代码操作~</p>
-<h3 id="关于Gitee-Pages搭建"><a href="#关于Gitee-Pages搭建" class="headerlink" title="关于Gitee Pages搭建"></a>关于Gitee Pages搭建</h3><p>参考博客：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7777395/">https://www.bilibili.com/read/cv7777395/</a></p>
+          <h1 id="二进制形式和文本形式读取文件区别"><a href="#二进制形式和文本形式读取文件区别" class="headerlink" title="二进制形式和文本形式读取文件区别"></a>二进制形式和文本形式读取文件区别</h1><p>经过今晚和室友长时间的实验，得出了以下规律</p>
+<pre><code>Ascii码
+10： \n          //全称new line         换行键
+13： \r          //全称carriage return  回车键    
+这里主要看英文意思，carriage return是把光标移到当前行首位
+
+在不同的操作系统中，换行符的表示方式是不一样的。在UNIX系统中，换行符使用&quot;\n&quot; , 在 windows 系统中换行使用 “\r\n”。
+</code></pre>
+<p>所以当我们以二进制形式读取文本并塞进字符串s中，使用substr截取/n之间的字符串的时候，你会多截一个\r，而你文本形式getline就没有</p>
+<pre><code>始发 北京西10:00  
+11:07石家庄11:09   //长度是16，5+6+5，汉字占2长度
+12:30郑州东12:33
+14:17武汉14:20
+15:38长沙南15:41
+18:01广州南18:06
+18:45福田 终点
+//这是文本形式getline得到的结果
+</code></pre>
+<pre><code>始发 北京西10:00/r  
+11:07石家庄11:09/r   //长度是17，5+6+6+1，汉字占2长度
+12:30郑州东12:33/r
+14:17武汉14:20/r
+15:38长沙南15:41/r
+18:01广州南18:06/r
+18:45福田 终点/r
+//这是二进制形式substr得到的结果
+//注意/r是非显示字符，所以你看上去是一样的
+</code></pre>
+<p>你可能觉得好像没啥影响，毕竟输出看起来是一样的，我们来看特殊情况</p>
+<pre><code>string s=&quot;123&quot;;
+s=s+&#39;\r&#39;;
+cout&lt;&lt;s&lt;&lt;5554;
+输出结果是5554，很好\r使用一次就没了，不然预期输出是455
+
+假设你用把&quot;11:07石家庄11:09/r&quot;放到字符串s里
+你使用cout&lt;&lt;s&lt;&lt;&quot;00&quot;;
+你得到的输出结果是： 00:07石家庄11:09
+</code></pre>
+<p>所以是有这么一点小麻烦的</p>
+<p>还有一点麻烦是，你用s.size()的时候，多的非显示\r会让你的s.size()比你预期的多1个</p>
+<p>说下结论吧</p>
+<pre><code>文本文件与二进制文件的读写
+【https://wenku.baidu.com/view/d7dfd688680203d8ce2f243c.html】
+
+以什么模式打开文件根本不重要，只要关心这个文件里的数据内容本身是二进制格式还是文本格式就好了！如果内容是文本格式的，你就调用文本格式那一套函数，比如puts,gets,fscanf,fprintf,&lt;&lt;,&gt;&gt;等，如果内容是二进制格式的，你就调用二进制格式那一套函数，比如fread,fwrite,ifstream.read(),ofstream.write()等。 保持文件内容与处理函数相对应。
+
+【http://blog.csdn.net/songjinshi/article/details/7789584】
+
+有数据要存储的时候．首先得考虑你要存储的数据是字符数据还是非字符数据，再来判断选择用二进制文件还是文本文件来进行存储。（字符数据放在文本/二进制文件中，都和内存中的数据形式没有区别）
+
+【http://www.cnblogs.com/pengwangguoyh/articles/3223072.html】
+
+Ｃ的文本方读写与二进制读写的差别仅仅体现在回车换行符的处理上．文本方式写时，每遇到一个&#39;&#39;\n&#39;&#39;(0AH换行符)，它将其换成&#39;&#39;\r\n&#39;&#39;(0D0AH，回车换行)，然后再写入文件；当文本读取时，它每遇到一个&#39;&#39;\r\n&#39;&#39;将其反变化为&#39;&#39;\n&#39;&#39;，然后送到读缓冲区．正因为文本方式有&#39;&#39;\n&#39;&#39;－－&#39;&#39;\r\n&#39;&#39;之间的转换，其存在转换耗时．二进制读写时，其不存在任何转换，直接将写缓冲区中数据写入文件．
+</code></pre>
+<p>上面主要讨论的是二进制读取会多读一个\r的问题</p>
 
         </div>
         <!-- .entry-content -->
@@ -427,36 +465,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2021/08/27/Sakura%E7%BE%8E%E5%8C%96/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img25.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img25.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                Sakura主题美化</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2021/08/27/%E4%BD%BF%E7%94%A8git%20push%E6%8F%90%E4%BA%A4blog/" rel="next">
+            <a href="/2022/04/15/2020%E6%98%A5C++%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img1.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                使用git push提交blog</h3>
+                2022春C++复习总结</h3>
                 <hr>
               </div>
             </a>

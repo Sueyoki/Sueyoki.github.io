@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Gitee仓库使用（附gitee pages参考） | Sueyoki</title>
+  <title itemprop="name">2022春C++复习总结 | Sueyoki</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -353,11 +353,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img6.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img6.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg);" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Gitee仓库使用（附gitee pages参考）</h1>
+      2022春C++复习总结</h1>
       <p class="entry-census">
         <span>
           <a href="hojun.cn">
@@ -369,7 +369,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-8-27<span class="bull">
+        2022-4-15<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -383,23 +383,1244 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Gitee仓库使用"><a href="#Gitee仓库使用" class="headerlink" title="Gitee仓库使用"></a>Gitee仓库使用</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cndarren/p/12125091.html">本地项目上传到码云(gitee)远程仓库(图文详解) - 星空流年 - 博客园 (cnblogs.com)</a></p>
-<p>参考上一篇在github仓库使用，大同小异，只挑重点和区别</p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131159155.png" alt="img"></p>
-<p>新建文件夹右键git bash here以后</p>
-<p>必须先git init，然后下一步才能进行</p>
-<p>输入 git remote add origin 码云仓库地址  例如：git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/%E4%BD%A0%E7%9A%84%E7%A0%81%E4%BA%91%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E5%88%9B%E5%BB%BA%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D.git">https://gitee.com/你的码云用户名/你创建的仓库名.git</a></p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131204529.png" alt="img"></p>
-<p> git pull origin master  //这步的作用是：将码云上的仓库pull到本地你新建的文件夹中</p>
-<p>然后把你要传的文件复制过去</p>
-<p>git status</p>
-<p>git add . </p>
-<p>git commit -m ‘第一次提交’      //把文件提交到仓库，单引号里随便改<br>git push      </p>
-<p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202109131215649.png" alt="2"></p>
-<p>这里报了个bug，原因应该是github默认分支改成main了，gitee还是master，所以切换成master就好啦</p>
-<p>git checkout master</p>
-<p>然后进行上面四步代码操作~</p>
-<h3 id="关于Gitee-Pages搭建"><a href="#关于Gitee-Pages搭建" class="headerlink" title="关于Gitee Pages搭建"></a>关于Gitee Pages搭建</h3><p>参考博客：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7777395/">https://www.bilibili.com/read/cv7777395/</a></p>
+          <h1 id="C-复习指南"><a href="#C-复习指南" class="headerlink" title="C++复习指南"></a>C++复习指南</h1><h3 id="1-类的使用"><a href="#1-类的使用" class="headerlink" title="1.类的使用"></a>1.类的使用</h3><pre><code>主要注意需要传参的时候定义为
+test t(10,20);
+不需要传参的时候定义为
+test t;
+</code></pre>
+<pre><code>private是完全私有的，只有自己可以访问，派生类和外部都不可以访问
+protected是受保护的，只有派生类可以访问，外部不能访问
+在类外如果想使用类中的成员，只能直接使用public类型的，proteced和private都是不能访问的，对于类外而言，这两个是完全相同的。
+所以类外t.a=5是错误的，正确写法是调类内函数修改
+//了解，考试不考文字
+</code></pre>
+<p>函数重载（往年未考，不做重点）</p>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int add(int a,int b)
+&#123;
+    return a+b;
+&#125;
+int add(int a,int b,int c)
+&#123;
+    return a+b+c;
+&#125;
+int add(double a,double b )
+&#123;
+    return a+b;
+&#125;
+int main ()
+&#123;
+    int a=1,b=2,c=3;
+    cout&lt;&lt;&quot;a+b=&quot;&lt;&lt;add(a,b)&lt;&lt;endl;//通过参数个数或者类型来辨别
+    cout&lt;&lt;&quot;a+b+c=&quot;&lt;&lt;add(a,b,c)&lt;&lt;endl;
+    cout&lt;&lt;&quot;小数&quot;&lt;&lt;add(1.5,6.3)&lt;&lt;endl;
+&#125;
+//a+b=3
+//a+b+c=6
+//小数7
+//这里根据参数类型自动选择函数
+</code></pre>
+<p>类内构造函数重载</p>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+class ss
+&#123;
+private:
+    int a,b;
+public:
+    ss()
+    &#123;
+        a=10;
+        b=20;
+    &#125;
+    ss(int aa,int bb)
+    &#123;
+        a=aa;
+        b=bb;
+    &#125;
+    ss(int bb)
+    &#123;
+        a=10;
+        b=bb;
+    &#125;
+    int add()
+    &#123;
+        return a+b;
+    &#125;
+
+&#125; ;
+int main ()
+&#123;
+    ss a1,a2(15,25),a3(50);
+    cout&lt;&lt;&quot;a+b=&quot;&lt;&lt;a1.add()&lt;&lt;endl;
+    cout&lt;&lt;&quot;a+b=&quot;&lt;&lt;a2.add()&lt;&lt;endl;
+    cout&lt;&lt;&quot;a+b=&quot;&lt;&lt;a3.add()&lt;&lt;endl;
+
+&#125;
+//a+b=30
+//a+b=40
+//a+b=60
+</code></pre>
+<p>引用</p>
+<pre><code class="C++">#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+void Swap(int* x,int* y)
+&#123;
+    int p;
+    p=*x;
+    *x=*y;
+    *y=p;
+&#125;
+void Swap(int&amp; x,int&amp; y )
+&#123;
+    int p;
+    p=x;
+    x=y;
+    y=p;
+&#125;
+int main ()
+&#123;
+    int a=1000,b=2000;
+    Swap(&amp;a,&amp;b);
+    cout&lt;&lt;a&lt;&lt;endl;
+    cout&lt;&lt;b&lt;&lt;endl;
+    Swap(a,b);
+    cout&lt;&lt;a&lt;&lt;endl;
+    cout&lt;&lt;b&lt;&lt;endl;
+&#125;
+//2000
+//1000
+//1000
+//2000
+//这里用了函数重载，C++引用以后就相当于变量本身
+</code></pre>
+<pre><code class="C++">void add(vector&lt;int&gt;&amp; b,int n)  //vector记得引用 
+&#123;
+    for(int i=0;i&lt;b.size();i++)
+    &#123;
+        cout&lt;&lt;b[i]&lt;&lt;endl;
+    &#125;
+&#125;
+add(a,100);  //传参和数组一样传名就行,区别是数组b是首地址，cout&lt;&lt;a会报错
+</code></pre>
+<p>类的继承和派生（重点）</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+
+using namespace std;
+class point_2d
+&#123;
+protected:
+    int x,y;
+public:
+   point_2d()
+   &#123;
+       x=0;
+       y=0;
+   &#125;
+   point_2d(int xx,int yy)
+   &#123;
+       x=xx;
+       y=yy;
+   &#125;
+   void output()
+   &#123;
+       cout&lt;&lt;&quot;x=&quot;&lt;&lt;x&lt;&lt;endl;
+       cout&lt;&lt;&quot;y=&quot;&lt;&lt;y&lt;&lt;endl;
+   &#125;
+&#125;;
+class point_3d:public point_2d       //继承这句别拼错了
+&#123;
+protected:
+    int z;
+public:
+   point_3d()//: point_2d()其实有一句这个，可以省略
+   &#123;
+       z=0;
+   &#125;
+   point_3d(int xx,int yy,int zz): point_2d(xx,yy)    //考点，这句得抄
+   &#123;
+       z=zz;
+   &#125;
+   void output()
+   &#123;
+       cout&lt;&lt;&quot;x=&quot;&lt;&lt;x&lt;&lt;endl;
+       cout&lt;&lt;&quot;y=&quot;&lt;&lt;y&lt;&lt;endl;
+       cout&lt;&lt;&quot;z=&quot;&lt;&lt;z&lt;&lt;endl;
+   &#125;
+&#125;;
+int main()
+&#123;
+
+    point_3d b1,b2(1,2,3);
+    b1.output();
+    b2.output();
+    return 0;
+&#125;
+//x=0
+//y=0
+//z=0
+//x=1
+//y=2
+//z=3
+//这里注意因为是定义的子类对象，所以调用子类函数，个人见解  子类=子类+父类（父类和子类的东西子类都能用）
+</code></pre>
+<pre><code class="C++">class test1
+&#123;
+protected:
+    int x1,x2,y1,y2;
+&#125;;
+class test2:public test1
+&#123;
+    test2(int xx1,int xx2,int yy1,int yy2):test1(xx1,xx2,yy1,yy2)
+    &#123;
+         //test2里面不需要定义点
+    &#125;
+&#125;;
+//举个小例子强化一下这句
+</code></pre>
+<p>类的组合调用</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+class birthday
+&#123;
+protected:
+    int year,month,day;
+public:
+  birthday(int yy,int mm,int dd)
+  &#123;
+      year=yy;
+      month=mm;
+      day=dd;
+  &#125;
+   void output()
+   &#123;
+
+       cout&lt;&lt;year&lt;&lt;&#39;-&#39;&lt;&lt;month&lt;&lt;&#39;-&#39;&lt;&lt;day&lt;&lt;endl;
+   &#125;
+&#125;;
+class student
+&#123;
+protected:
+    string name;
+    birthday a;//定义一个对象
+
+public:
+   student(string nn,int xx,int yy,int zz): a(xx,yy,zz)//像对父类一样给其赋值
+
+   &#123;
+
+       name=nn;
+   &#125;
+   void output()
+   &#123;
+       cout&lt;&lt;&quot;name:&quot;&lt;&lt;name&lt;&lt;endl;
+      a.output();
+   &#125;
+&#125;;
+int main()
+&#123;
+
+   student a(&quot;hwq&quot;,2000,9,26);
+   a.output();
+   system(&quot;pause&quot;);
+    return 0;
+&#125;
+//这里一个类内可以定义另一个内，参数像继承一样一起传
+</code></pre>
+<h3 id="2-运算符重载（重点）"><a href="#2-运算符重载（重点）" class="headerlink" title="2.运算符重载（重点）"></a>2.运算符重载（重点）</h3><pre><code class="c++">//输入输出运算符重载，可内可外，内要加friend
+class test
+&#123;
+&#125;;
+//返回值类型 关键字 重载运算符 （参数表，os自己起的返回参数名，类的对象）
+ostream&amp; operator &lt;&lt;(ostream&amp; os,test a)
+&#123;
+    a.output();//重载的内容
+    return os;//返回值
+&#125;
+istream&amp; operator &gt;&gt;(istream&amp; os,test&amp; a)
+&#123;
+    a.input();
+    return os;
+&#125;
+</code></pre>
+<pre><code class="c++">//双目运算符重载
+class test
+&#123;
+//友元 返回值类型 关键字 重载运算符 （参数表，os自己起的返回参数名，类的对象）
+    friend ostream&amp; operator &lt;&lt;(ostream&amp; os,test a)
+    &#123;
+        a.output();//重载的内容
+        return os;//返回值
+    &#125;
+    friend istream&amp; operator &gt;&gt;(istream&amp; os,test&amp; a)
+    &#123;
+        a.input();
+        return os;
+    &#125;
+//返回值类型 关键字 重载运算符 参数表
+    test operator +(test a)
+    &#123;
+        test temp;
+        temp.m=m+a.m;
+        temp.n=n+a.n;
+        return temp;
+    &#125;
+&#125;;
+//这里必须放类内，因为双目涉及两个类，省略的那个即当前类，出现在参数里的是+右边的类（这里是a）
+//另外注意双目返回的对象是类，所以要定义个temp
+</code></pre>
+<pre><code class="c++">//单目运算符重载
+class test
+&#123;
+     test operator ++()//++i
+    &#123;
+        test temp(i);
+        temp.i=i+1;
+        i++;
+        return temp;
+    &#125;
+    test operator ++(int n)//规定带参数的是i++
+    &#123;
+        test temp(i);
+        temp.i=i;
+        i++;
+        return temp;
+    &#125;
+
+&#125;;
+//注意在类内,i是当前类内参数
+</code></pre>
+<pre><code class="c++">//单目运算符重载，顺序别反
+class test
+&#123;
+     test operator --()//--i
+    &#123;
+        --i;
+        return *this;
+    &#125;
+    test operator --(int n)//规定带参数的是i++
+    &#123;
+        test temp(*this);
+        --(*this);
+        return temp; //表达式的值不变
+    &#125;
+
+&#125;;
+//注意在类内,i是当前类内参数
+</code></pre>
+<h3 id="3-容器（重点）"><a href="#3-容器（重点）" class="headerlink" title="3.容器（重点）"></a>3.容器（重点）</h3><p>复习课16-4 test很好</p>
+<p>vector</p>
+<pre><code class="c++">//vector使用
+bool sort1(int n1, int n2)
+&#123;
+    return n1&gt;n2;//n1&gt;n2即前大后小，反向排序
+&#125;
+int main()
+&#123;
+    vector&lt;int&gt; a;
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(3);
+    a.erase(a.begin()+1);//擦掉了2，这里begin（）+1的位置可以换成迭代器
+    a.insert(a.begin()+1,4);//在原来2的位置上插入了4
+    //反向排序
+    sort(a.begin(),a.end(),sort1);
+&#125;
+</code></pre>
+<p>list</p>
+<pre><code class="C++">//list使用
+list&lt;int&gt; a;
+a.push_back
+a.erase
+a.insert
+和vector函数用法差不多，这里重点讲下区别
+list是双向链表，必须配合迭代器p使用，初始化p=a.begin(),然后写循环让p++一步步挪，不能跳跃挪
+cout&lt;&lt;a[0]; //错，但vector可以
+a.erase(a.begin()+1); //错
+
+int main()
+&#123;
+    list&lt;int&gt; a;
+    a.push_back(1);
+    a.push_back(2);
+    list&lt;int&gt;::iterator p;
+    p=a.begin();
+    p++;
+    cout&lt;&lt;*p;
+    return 0;
+&#125;//结果是2
+</code></pre>
+<pre><code class="C++">//示例程序 将grade=4的学生删掉并按成绩由大到小排序
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;list&gt;
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct S
+&#123;
+    int number;
+    int score;
+    int grade;
+&#125;;
+class test
+&#123;
+private:
+    int n,i;
+    list&lt;S&gt;a;
+    list&lt;S&gt;::iterator p;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        S temp;
+        srand(time(0));
+        for(i=0;i&lt;n;++i)
+        &#123;
+            temp.number=i+1;
+            temp.score=rand()%101;
+            temp.grade=rand()%4+1;
+            a.push_back(temp);
+        &#125;
+    &#125;
+    void browse()
+    &#123;
+        cout&lt;&lt;&quot;====================&quot;&lt;&lt;endl;
+        for(p=a.begin();p!=a.end();++p)
+        &#123;
+            cout&lt;&lt;p-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p-&gt;score&lt;&lt;&quot;-&quot;&lt;&lt;p-&gt;grade&lt;&lt;endl;
+        &#125;
+    &#125;
+    static bool sort1(S s1,S s2)
+    &#123;
+        return s1.score&gt;s2.score;//成绩由大到小
+    &#125;
+    void Sort()
+    &#123;
+        a.sort(sort1);//list调用sort和别的不一样
+
+    &#125;
+    static bool find1(S s)
+    &#123;
+        return s.grade==4;
+    &#125;
+    void Find()
+    &#123;
+
+        p=a.begin(); //注意每次在新函数使用迭代器位置要归零
+        while(1)
+        &#123;
+            p=find_if(p,a.end(),find1);
+            if(p!=a.end())
+            &#123;
+                p=a.erase(p);
+            &#125;
+            else break;
+        &#125;
+    &#125;
+    void Erase(int m)
+    &#123;
+        int i=0;
+        p=a.begin();
+        for(i=0;i&lt;m;i++)
+        &#123;
+            ++p;//list是双向链表，不支持直接+m，只能一点点挪，m是挪移位置
+            //p=a.begin()+m;
+        &#125;
+
+        a.erase(p);
+    &#125;
+    void Insert()
+    &#123;
+        S temp;
+        temp.number=12345;
+        temp.score=12345;
+        temp.grade=12345;
+        p=a.begin(); //list插入快
+        a.insert(p,temp);//在p之前插入12345
+    &#125;
+&#125;;
+
+int main()
+&#123;
+    test t(8);
+    t.browse();
+    t.Find();
+    t.Sort();
+    //t.Insert();
+    //t.Erase(1);
+    t.browse();
+    return 0;
+&#125;
+//主要注意erase和sort和vector区别
+</code></pre>
+<p>map(年年考，重点)</p>
+<pre><code class="c++">map是（键-值）对的集合，数据结构是二叉树，会自动按照键值排序，存储顺序与输入顺序无关
+map&lt;int,string&gt; a;
+map&lt;int,string&gt;::iterator p;
+a.insert(pair&lt;int,string&gt;(1,&quot;zz&quot;));
+a.insert(pair&lt;int,string&gt;(2,&quot;yy&quot;));
+p=a.find(1);
+p++;
+cout&lt;&lt;p-&gt;first&lt;&lt;p-&gt;second;
+a.erase(p);
+//输出2yy，然后擦除2yy
+</code></pre>
+<p>示例程序</p>
+<pre><code class="c++">//map二叉树
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+#include&lt;list&gt;
+#include&lt;map&gt;
+using namespace std;
+struct S
+&#123;
+    int number;
+    int score;
+&#125;;
+class test
+&#123;
+private:
+    int n,i;
+    map&lt;int,S&gt;a;//左边的int叫键值,键值动不了，动右边
+    map&lt;int,S&gt;::iterator p;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        S temp;
+        srand(time(0));
+        for(i=0;i&lt;n;++i)
+        &#123;
+            temp.number=rand()%10;
+            temp.score=rand();
+            a.insert(pair&lt;int,S&gt;(i+1,temp));//指定键值从1开始往后排
+        &#125;
+    &#125;
+    void browse()
+    &#123;
+        cout&lt;&lt;&quot;====================&quot;&lt;&lt;endl;
+        for(p=a.begin();p!=a.end();++p)
+        &#123;
+            cout&lt;&lt;p-&gt;first&lt;&lt;&quot;:&quot;&lt;&lt;p-&gt;second.number&lt;&lt;&quot;---&quot;&lt;&lt;p-&gt;second.score&lt;&lt;endl;
+        &#125;
+        //因为是数对，所以第一个是first，第二个是second
+    &#125;
+    void Find() //不需要变，只能检索键值
+    &#123;
+        int temp;
+        cout&lt;&lt;&quot;input:&quot;;
+        cin&gt;&gt;temp;
+        p=a.find(temp);//map只查键值,查别的不用map
+        if (p!=a.end())
+        &#123;
+           cout&lt;&lt;p-&gt;first&lt;&lt;&quot;:&quot;&lt;&lt;p-&gt;second.number&lt;&lt;&quot;---&quot;&lt;&lt;p-&gt;second.score&lt;&lt;endl;
+        &#125;
+        else cout&lt;&lt;&quot;no find!&quot;&lt;&lt;endl;
+
+    &#125;
+
+    void Erase(int m)
+    &#123;
+        int i=0;
+        p=a.begin();
+        for(i=0;i&lt;m;i++)
+        &#123;
+            ++p;
+
+        &#125;
+        //p=a.begin()+m; //这是错的，map只能一点点挪,map树状结构存储不连续，加法无意义
+        a.erase(p);
+    &#125;
+    void Insert()
+    &#123;
+        S temp;
+        temp.number=12345;
+        temp.score=12345;
+        p=a.begin(); 
+        a.insert(pair&lt;int,S&gt;(100,temp));//指定键值
+    &#125;
+&#125;;
+
+int main()
+&#123;
+    test t(10);
+    //t.browse();  //左边键值会自动由小到大排好，插入时二叉树特点
+    t.Insert();
+    t.Erase(9);
+    t.browse();
+    //t.Find();
+
+    return 0;
+&#125;
+</code></pre>
+<p>16-4 test</p>
+<pre><code class="C++">//容器：遍历、排序、检索 
+#include&lt;iostream&gt;
+#include&lt;ctime&gt;
+#include&lt;cstdlib&gt;
+#include&lt;vector&gt;
+#include&lt;list&gt;
+#include&lt;map&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+struct S
+&#123;
+    int number;
+    int score;
+    bool operator==(S s)
+    &#123;
+        return number==s.number;
+    &#125;
+&#125;;
+class test
+&#123;
+private:
+    int n,i;
+    vector&lt;S&gt;a1;
+    vector&lt;S&gt;::iterator p1;
+    list&lt;S&gt;a2;
+    list&lt;S&gt;::iterator p2;
+    map&lt;int,S&gt;a3;
+    map&lt;int,S&gt;::iterator p3;
+    static int m;
+public:
+    test(int nn)
+    &#123;
+        n=nn;
+        srand(time(0));
+        S temp;
+        for(i=0;i&lt;n;++i)
+        &#123;
+            temp.number=rand();
+            temp.score=rand();
+            a1.push_back(temp);
+            a2.push_back(temp);
+            a3.insert(pair&lt;int,S&gt;(i+1,temp));
+        &#125;
+    &#125;
+    void browse1()
+    &#123;
+        for(p1=a1.begin();p1!=a1.end();++p1)
+        &#123;
+            cout&lt;&lt;p1-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p1-&gt;score&lt;&lt;endl;
+        &#125;
+    &#125;    
+    void browse2()
+    &#123;
+        for(p2=a2.begin();p2!=a2.end();++p2)
+        &#123;
+            cout&lt;&lt;p2-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p2-&gt;score&lt;&lt;endl;
+        &#125;
+    &#125;    
+    void browse3()
+    &#123;
+        for(p3=a3.begin();p3!=a3.end();++p3)
+        &#123;
+            cout&lt;&lt;p3-&gt;first&lt;&lt;&quot;:&quot;&lt;&lt;p3-&gt;second.number&lt;&lt;&quot;-&quot;
+                                &lt;&lt;p3-&gt;second.score&lt;&lt;endl;
+        &#125;
+    &#125;    
+    static bool sort1(S s1,S s2)
+    &#123;
+        return s1.number&gt;s2.number;
+    &#125;
+    void Sort1()
+    &#123;
+        sort(a1.begin(),a1.end(),sort1);
+    &#125;
+    void Sort2()
+    &#123;
+        a2.sort(sort1);
+    &#125;
+    void Find1()
+    &#123;
+        S temp;
+        cout&lt;&lt;&quot;input number:&quot;;
+        cin&gt;&gt;temp.number;
+        p1=a1.begin();
+        while(1)
+        &#123;
+            p1=find(p1,a1.end(),temp);
+            if(p1!=a1.end())
+            &#123;
+                cout&lt;&lt;p1-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p1-&gt;score&lt;&lt;endl;
+                ++p1;
+            &#125;
+            else break;
+        &#125;
+    &#125;
+    void Find2()//与Find1相同 
+    &#123;
+        S temp;
+        cout&lt;&lt;&quot;input number:&quot;;
+        cin&gt;&gt;temp.number;
+        p2=a2.begin();
+        while(1)
+        &#123;
+            p2=find(p2,a2.end(),temp);
+            if(p2!=a2.end())
+            &#123;
+                cout&lt;&lt;p2-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p2-&gt;score&lt;&lt;endl;
+                ++p2;
+            &#125;
+            else break;
+        &#125;
+    &#125;
+    void Find3()
+    &#123;
+        int temp;
+        cout&lt;&lt;&quot;input number:&quot;;
+        cin&gt;&gt;temp;
+        p3=a3.find(temp);
+        if(p3!=a3.end())
+            cout&lt;&lt;p3-&gt;first&lt;&lt;&quot;:&quot;&lt;&lt;p3-&gt;second.number&lt;&lt;&quot;-&quot;
+                                &lt;&lt;p3-&gt;second.score&lt;&lt;endl;
+        else cout&lt;&lt;&quot;no find!&quot;&lt;&lt;endl;    
+    &#125;
+    static bool find1(S s)
+    &#123;
+        return s.score&lt;m;
+    &#125;
+    void Find_if()
+    &#123;
+        cout&lt;&lt;&quot;input score blow:&quot;;
+        cin&gt;&gt;m;
+        p1=a1.begin();
+        while(1)
+        &#123;
+            p1=find_if(p1,a1.end(),find1);
+            if(p1!=a1.end())
+            &#123;
+                cout&lt;&lt;p1-&gt;number&lt;&lt;&quot;-&quot;&lt;&lt;p1-&gt;score&lt;&lt;endl;
+                ++p1;
+            &#125;
+            else break;
+        &#125;
+    &#125;
+&#125;;
+int test::m;
+int main()
+&#123;
+    test t(100000);
+    t.Find_if();
+    return 0;
+&#125;
+//不背也行看最底下那个怎么写叭
+</code></pre>
+<h3 id="4-键盘码"><a href="#4-键盘码" class="headerlink" title="4.键盘码"></a>4.键盘码</h3><pre><code>ESC 27
+ENTER 32
+SPACE 32
+上箭头 -32 72
+左箭头 -32 75
+右箭头 -32 77
+下箭头 -32 80
+</code></pre>
+<pre><code class="C++">//2020春考试卷子 横线那行会了就行
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include&lt;conio.h&gt;
+using namespace std;
+class test
+&#123;
+private:
+    int x,y;
+    clock_t t;
+public:
+    test()
+    &#123;
+        x=5;
+        y=5;
+        t=clock();
+    &#125;
+    void gotoxy(int x,int y)   //这个函数不用背，会给
+    &#123;
+        HANDLE h;//句柄,对象的索引
+        COORD c;//结构体,坐标值
+        c.X=x;
+        c.Y=y;
+        h=GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleCursorPosition(h,c);
+    &#125;
+    void draw()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;●&quot;;
+    &#125;
+    void erase()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;  &quot;;
+    &#125;
+    void key(clock_t&amp; t,int tt)
+    &#123;
+        if(clock()-t&gt;tt)
+        &#123;
+//------------------------------------------
+            //绘制图形
+            draw();   
+            //接收键盘码
+            char c1,c2;
+            c1=getch();
+            if(c1==27)
+            &#123;
+                exit(0);
+            &#125;
+            else if(c1==-32)
+            &#123;
+                //清除图形
+                erase();
+                //坐标变换
+                c2=getch();
+                switch(c2)
+                &#123;
+                case 72:
+                    y=(--y+25)%25;  //注意减到0以后并不会自动变正数，所以手动变正
+                    break;
+                case 75:
+                    x=(--x+80)%80;
+                    break;
+                case 77:
+                    x=(++x)%80;
+                    break;
+                case 80:
+                    y=(++y)%25;
+                    break;
+                &#125;
+            &#125;
+
+//------------------------------------------
+        &#125;
+
+    &#125;
+    void move()
+    &#123;
+        while(true)
+        &#123;
+            key(t,10);
+        &#125;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.move();
+    return 0;
+&#125;
+//这里注意小球占俩字符，erase要输出俩空格
+</code></pre>
+<p>计时器</p>
+<pre><code>int tt;
+clock_t t;
+t=clock();
+经常会用 if(clock()-t&gt;tt)//当前时间-t
+作为判断时间间隔依据
+</code></pre>
+<h3 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5.字符串"></a>5.字符串</h3><pre><code>//插入子串s.insert(插入位置,“串”);
+//删除子串s.erase(开始位置，长度);
+//查找子串s.find(内容，开始位置);
+//取子串s.substr(开始位置，长度);
+//替换子串s.replace(开始位置，替换长度，替换串);
+</code></pre>
+<pre><code>string::size_type n;//无符号长整数，字符比较短的时候可用int替代
+if(s.find(s1,0)!=string::npos)//npos是比字符串长度还大的一个整数，就是代表没查到的意思
+</code></pre>
+<p>模糊查询例子</p>
+<pre><code class="C++">#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+int main()
+&#123;
+
+    string s,s1;
+    s=&quot;s-王小二-89-张小三-95-李小二-100&quot;;
+    s1=&quot;小二&quot;;
+    string name ,score;
+    string::size_type n,n1,n2,pos=0;
+    while(1)
+&#123;   if(s.find(s1,pos)!=string::npos)
+    &#123;
+        n=s.find(s1,pos);
+        n=s.rfind(&quot;-&quot;,n);//逆向查找
+        n1=s.find(&quot;-&quot;,n+1);
+        n2=s.find(&quot;-&quot;,n1+1);
+        name=s.substr(n+1,n1-n-1);
+        score=s.substr(n1+1,n2-n1-1);
+        cout&lt;&lt;&quot;name:&quot;&lt;&lt;name&lt;&lt;endl;
+        cout&lt;&lt;&quot;score=&quot;&lt;&lt;score&lt;&lt;endl;
+        pos=n2;
+
+    &#125;
+    else break;
+
+&#125;
+    return 0;
+&#125;
+</code></pre>
+<p>字符串逆序两种方法</p>
+<pre><code class="c++">void Reverse()
+&#123;
+    string temp;
+    s=&quot;1234&quot;;
+    temp=s;
+    int len=s.size();
+    for(int i=0;i&lt;len;++i)
+    &#123;
+            s[i]=temp[len-i-1];
+    &#125;
+&#125;
+//等价于库函数
+//reverse(s.begin(),s.end());
+</code></pre>
+<p>字符串流转换</p>
+<pre><code class="C++">string int2str(int n)
+&#123;
+    string s;
+    stringstream ss;
+    ss&lt;&lt;n;
+    ss&gt;&gt;s;
+    return s;
+&#125;
+int str2int(string s)
+&#123;
+    int n;
+    stringstream ss;
+    ss&lt;&lt;s;
+    ss&gt;&gt;n;
+    return n;
+&#125;
+</code></pre>
+<h3 id="6-文件处理（超重点）"><a href="#6-文件处理（超重点）" class="headerlink" title="6.文件处理（超重点）"></a>6.文件处理（超重点）</h3><pre><code class="c++">//打开文件的几种方式
+ofstream f1(&quot;1.dat&quot;,ios::binary); //以写形式打开，o是out从程序往外出
+f1.write((char*)s.c_str(),s.size());
+
+ifstream f2(filename.c_str(),ios::binary); //以读形式打开，i是in进到程序里
+f2.read((char*)s2.c_str(),n);//第一个指针决定从第几位开始读n个字符到s2
+
+getline(f,s);//把当前行读到s里
+//不过更建议下面的方式，读写都有了
+class test
+&#123;
+private:
+    fstream f;
+public:
+    test()
+    &#123;
+        f.open(&quot;test.doc&quot;,ios::in|ios::out|ios::binary);
+        if(!f)
+        &#123;
+            cout&lt;&lt;&quot;file error!&quot;&lt;&lt;endl;
+            exit(0);
+        &#125;
+        else
+        &#123;
+            
+        &#125;
+
+    &#125;
+    ~test()
+    &#123;
+        f.close();
+    &#125;
+&#125;;
+</code></pre>
+<pre><code class="c++">//ios::beg：表示输入流的开始位置
+//ios::cur：表示输入流的当前位置
+//ios::end：表示输入流的结束位置
+//seek定位指针位置，g是get，读指针；p是put，写指针
+f2.seekg(0,ios::end);//0是偏移量，正则向后偏移，负则向前偏移,这里是将读指针移到文件尾
+n=f2.tellg();//返回读指针位置
+tellp 用于返回写入位置，tellg 则用于返回读取位置
+</code></pre>
+<p>例子见考试卷最后一题</p>
+<pre><code class="C++">#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+class test
+&#123;
+private:
+    fstream f;
+    string::size_type n;
+    map&lt;string,string&gt;a;
+    map&lt;string,string&gt;::iterator p;
+public:
+    test()
+    &#123;
+        string s,s1;
+        f.open(&quot;英汉词典.txt&quot;,ios::in);
+        while(true)
+        &#123;
+//------------------------------------------
+            string::size_type n,n1;  //换int也能跑
+            string temp;
+            getline(f,temp);  
+            n=temp.find(&quot; &quot;,0);
+            s=temp.substr(0,n);
+            n1=temp.rfind(&quot; &quot;,temp.size()); //逆序查找
+            s1=temp.substr(n1+1,temp.size()-n1-1);
+            a.insert(pair&lt;string,string&gt;(s,s1));
+            if(f.eof())   //文件指针走到尾退出循环
+            &#123;
+                break;
+            &#125;
+//------------------------------------------
+        &#125;
+
+    &#125;
+    ~test()
+    &#123;
+        f.close();
+    &#125;
+    void FIND()
+    &#123;
+        string word;
+        cout&lt;&lt;&quot;input word:&quot;;
+        cin&gt;&gt;word;
+        p=a.find(word);
+        if(p!=a.end())
+        &#123;
+            cout&lt;&lt;p-&gt;second&lt;&lt;endl;
+        &#125;
+        else
+            cout&lt;&lt;&quot;no word!&quot;&lt;&lt;endl;
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t;
+    t.FIND();
+    return 0;
+&#125;
+//这里主要注意getline用法和循环读到文件尾
+</code></pre>
+<pre><code class="c++">//将字符&#39;A&#39;写入二进制文件的最后一个字节
+#include &lt;iostream&gt;
+#include &lt;conio.h&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main()
+&#123;
+    char c=&#39;A&#39;;
+    fstream f(&quot;test.txt&quot;,ios::in|ios::out|ios::binary);
+    f.seekp(-1,ios::end); //这里会覆盖文件最后一个字节
+    f.write((char*)&amp;c,1);
+    f.close();
+    return 0;
+&#125;
+</code></pre>
+<h3 id="7-拓展"><a href="#7-拓展" class="headerlink" title="7.拓展"></a>7.拓展</h3><p>虚函数</p>
+<pre><code class="c++">//动态多态性:虚函数
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class A
+&#123;
+protected:
+    int a;
+    double b;
+public:
+    A(int aa,double bb)&#123;a=aa,b=bb;&#125;
+    virtual double total()
+    &#123;
+        return a*b;
+    &#125;
+&#125;;
+
+class B:public A
+&#123;
+protected:
+    double c;
+public:
+    B(int aa,double bb,double cc):A(aa,bb)&#123;c=cc;&#125;
+    virtual double total()
+    &#123;
+        return a*b*c;
+    &#125;
+&#125;;
+
+int main()
+&#123;
+    A a(2,10);
+    B b(3,10,0.2);
+    A *p;
+    p=&amp;a;
+    cout&lt;&lt;p-&gt;total()&lt;&lt;endl;
+    return 0;
+&#125;
+//自己运行+改改试试输出
+//区别是不加virtual默认调用父类函数
+</code></pre>
+<p>类模板</p>
+<pre><code class="C++">//=======类模板========
+#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+using namespace std;
+
+template&lt;class T1,class T2&gt;
+class test
+&#123;
+private:    
+    T1 a,b;
+public:
+    test(T1 aa,T1 bb)
+    &#123;
+        a=aa;b=bb;
+    &#125;    
+    T2 T1_T2(T1 s)
+    &#123;
+        stringstream ss;
+        T2 temp;
+        ss&lt;&lt;s;
+        ss&gt;&gt;temp;
+        return temp;
+    &#125;
+    T2 add()
+    &#123;
+        return T1_T2(a)+T1_T2(b);    
+    &#125;
+&#125;;
+int main()
+&#123;
+    test&lt;string,double&gt; t(&quot;1.2&quot;,&quot;3.4&quot;);
+    cout&lt;&lt;t.add()&lt;&lt;endl;
+    return 0;
+&#125;
+//类模板就是自动填充数据类型
+</code></pre>
+<p>键盘操作小球-计时器</p>
+<pre><code class="C++">//键盘控制小球移动
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;iomanip&gt;
+#include &quot;basic.cpp&quot;  //里面放了些隐藏光标和goto坐标函数
+using namespace std;
+
+class test
+&#123;
+private:
+    clock_t t1,t2;
+    int x,y;
+    int n;
+public:
+    test(int xx,int yy)
+    &#123;
+        x=xx;y=yy;
+        t1=clock();
+        t2=clock();
+        hide_cursor();
+    &#125;
+    void draw()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;●&quot;;
+    &#125;
+    void erase()
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;  &quot;;
+    &#125;
+    void output()//测试gotoxy用函数
+    &#123;
+        gotoxy(x,y);
+        cout&lt;&lt;&quot;hello!&quot;;
+    &#125;
+    void move1()
+    &#123;
+        if(clock()-t1&gt;50)
+        &#123;
+            draw();
+            t1=clock();
+        &#125;
+    &#125;
+    void move2()
+    &#123;
+        if(clock()-t2&gt;50)
+        &#123;
+            erase();
+            if(GetAsyncKeyState(VK_ESCAPE))exit(0);
+            if(GetAsyncKeyState(VK_LEFT))
+            &#123;
+                --x;
+                if(x&lt;0)x=78;
+            &#125;;
+            if(GetAsyncKeyState(VK_RIGHT))
+            &#123;
+                ++x;
+                if(x&gt;78)x=0;
+            &#125;;
+            if(GetAsyncKeyState(VK_UP))
+            &#123;
+                --y;
+                if(y&lt;0)y=24;
+            &#125;;
+            if(GetAsyncKeyState(VK_DOWN))
+            &#123;
+                ++y;
+                if(y&gt;24)y=0;
+            &#125;;
+            draw();
+            t2=clock();
+        &#125;
+    &#125;
+    void move()
+    &#123;
+        while(1)
+        &#123;
+            move1();
+            move2();
+        &#125;
+    &#125;
+    ~test()
+    &#123;
+        show_cursor();
+    &#125;
+&#125;;
+int main()
+&#123;
+    test t(10,10);
+    t.move();
+    return 0;
+&#125;
+//键盘码还是背这个叭
+</code></pre>
+<h3 id="8-有用小函数"><a href="#8-有用小函数" class="headerlink" title="8.有用小函数"></a>8.有用小函数</h3><pre><code>int a[10];
+memset(a,0,sizeof(a));//把里面初始化为0
+</code></pre>
+<pre><code>sqrt(3);//开平方，结果是1.732
+</code></pre>
+<pre><code>return *this返回的是当前对象的克隆或者本身（若返回类型为A， 则是克隆， 若返回类型为A&amp;， 则是本身 ）。return this返回当前对象的地址（指向当前对象的指针）
+//不用纠结太多，把*this当成当前对象用就行
+</code></pre>
+<pre><code>int *a;
+a=new int[n];
+delete []a; //这里清理了第二句开辟的空间，而不是清掉了a这个指针
+delete a;   //效果是一样的，但有可能会引起严重的后果，不安全，所以尽量使用上面的
+</code></pre>
+<pre><code>srand(time(0));
+rand();
+temp=(rand()*rand())%n //随机性会好一点
+</code></pre>
 
         </div>
         <!-- .entry-content -->
@@ -430,15 +1651,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2021/08/27/Sakura%E7%BE%8E%E5%8C%96/" rel="prev">
+            <a href="/2022/04/15/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img25.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img25.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img24.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img24.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                Sakura主题美化</h3>
+                记录下二进制和文件读写的区别</h3>
                 <hr>
               </div>
             </a>
@@ -448,15 +1669,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2021/08/27/%E4%BD%BF%E7%94%A8git%20push%E6%8F%90%E4%BA%A4blog/" rel="next">
+            <a href="/2022/04/07/%E5%B9%B3%E5%B9%B3%E6%97%A0%E5%A5%87%E7%9A%84C++%E5%8D%B7%E5%AD%90%E7%AD%94%E6%A1%88/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img1.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img23.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img23.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                使用git push提交blog</h3>
+                平平无奇的C++卷子答案</h3>
                 <hr>
               </div>
             </a>

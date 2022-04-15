@@ -724,7 +724,8 @@ public:
         &#123;
             a.push_back(i+1);
         &#125;
-    &#125; void select()
+    &#125; 
+    void select()
     &#123;
         int i,temp;
         for(i=0; i&lt;3; ++i)
@@ -894,8 +895,10 @@ public:
     &#123;
 
 //------------------------------------------
-        f.open(&quot;test.txt&quot;,ios::out|ios::in);
-        f.seekp(0,ios::end);//seekp是写指针，移到文件尾
+       f.open(&quot;test.txt&quot;,ios::out|ios::app); //app是追加写
+       //f.open(&quot;test.txt&quot;,ios::out|ios::in); 
+       //f.seekp(0,ios::end);//seekp是写指针，移到文件尾
+       //只写ios::out会覆盖写(原内容清0），所以写都要加上ios::in
 //------------------------------------------
         if(!f)
             cout&lt;&lt;&quot;文件建立错误！&quot;&lt;&lt;endl;
@@ -1300,9 +1303,26 @@ int main()
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2022/04/15/2020%E6%98%A5C++%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.3/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Sueyoki/CDN/pic/img10.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                2022春C++复习总结</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2022/02/09/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bc%E7%9B%98%E6%B8%85%E7%90%86/" rel="next">
               <div class="background">

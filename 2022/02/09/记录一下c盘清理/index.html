@@ -48,7 +48,7 @@
   /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
-  var bg = "https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(25).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(27).jpg.webp".split(",");
+  var bg = "https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(25).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(27).jpg.webp,https://cdn.jsdelivr.net/gh/Sueyoki/CDN@1.2/img/cover/(10).jpg.webp".split(",");
   var bgindex = Math.floor(Math.random()*bg.length);
   if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
     alert('朋友，IE浏览器未适配哦~');
@@ -396,6 +396,9 @@
 <p>理论上对AppData里面的数据可以随便删，最多就是应用崩溃了重新装，不会影响操作系统</p>
 <p>那就非常快乐了，排序的时候选大小文件夹不给排，所以我选的修改时间，因为容量总是一两天内突然爆炸</p>
 <p><img src="https://gitee.com/Sueyoki/ctf/raw/master/202202091203332.png" alt="img"></p>
+<p>我的路径在这里</p>
+<pre><code>C:\Users\苏圆琪\AppData\Roaming\Microsoft\PowerPoint
+</code></pre>
 <p>因为最近复习操作系统看网课截图做ppt，所以垃圾powerpoint留下了大量垃圾，tmp类型的临时文件可以直接删除，清理以后直接多出来10个g</p>
 <p>大概差不多就足够啦，想清理的话就从AppData里面的数据下手，找到最大的文件夹一步步分析就可</p>
 

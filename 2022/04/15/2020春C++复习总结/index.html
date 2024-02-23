@@ -584,6 +584,34 @@ class test2:public test1
 &#125;;
 //举个小例子强化一下这句
 </code></pre>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+class A
+&#123;
+public:
+ void f1()
+ &#123;
+     cout&lt;&lt;1;
+ &#125;
+&#125;;
+class B:public A
+&#123;
+public:
+ void f1()
+ &#123;
+     cout&lt;&lt;2;
+ &#125;
+&#125;;
+
+int main( )
+&#123;
+   class B t;
+   t.A::f1();
+    return 0;
+&#125;
+//同名函数
+</code></pre>
 <p>类的组合调用</p>
 <pre><code class="C++">#include &lt;iostream&gt;
 #include&lt;bits/stdc++.h&gt;
@@ -731,6 +759,9 @@ int main()
     a.erase(a.begin()+1);//擦掉了2，这里begin（）+1的位置可以换成迭代器
     a.insert(a.begin()+1,4);//在原来2的位置上插入了4
     //反向排序
+    int sum=accumulate(a.begin(),a.end(),0);//从0开始累加求和
+    int max=*max_element(a.begin(),a.end());//求最大
+    int min=*min_element(a.begin(),a.end());//求最小
     sort(a.begin(),a.end(),sort1);
 &#125;
 </code></pre>
@@ -744,6 +775,7 @@ a.insert
 list是双向链表，必须配合迭代器p使用，初始化p=a.begin(),然后写循环让p++一步步挪，不能跳跃挪
 cout&lt;&lt;a[0]; //错，但vector可以
 a.erase(a.begin()+1); //错
+
 
 int main()
 &#123;
@@ -820,7 +852,7 @@ public:
             p=find_if(p,a.end(),find1);
             if(p!=a.end())
             &#123;
-                p=a.erase(p);
+                p=a.erase(p);//和vector不一样，删除的时候要给p赋值，返回值为p的上一个位置，不然指针会飞掉
             &#125;
             else break;
         &#125;
@@ -1366,6 +1398,7 @@ public:
         f.open(&quot;英汉词典.txt&quot;,ios::in);
         while(true)
         &#123;
+            //moon n.月亮
 //------------------------------------------
             string::size_type n,n1;  //换int也能跑
             string temp;
@@ -1751,7 +1784,7 @@ temp=(rand()*rand())%n //随机性会好一点
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2022 Sueyoki<br>
+      &copy; 2024 Sueyoki<br>
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
